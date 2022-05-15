@@ -1,0 +1,433 @@
+.mainpage {
+    max-width: 1350px;
+    margin: auto;
+  }
+
+
+.content{
+display: flex;
+min-height: 900px;
+justify-content: space-between;
+margin: auto 10px ;
+padding-bottom: 100px;
+
+}
+
+/**********************************************************/
+
+.left-content{
+    margin-top: 40px ;
+    width: 750px;
+    min-height: 500px;
+    padding-top: 20px;
+}
+.left-content-text{
+    color: var(--whitecolor);
+    font-size: 28px;
+    width: 75%;
+    margin: 10px 20px;
+    line-height: 1.4;
+}
+
+.list-item-firt-line{
+    display: flex;
+    height: 40px;
+    padding: 7px;
+    width: max-content;
+    margin: 20px;
+  }
+  .list-item-user-img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    
+  }
+  .list-item-user-name{
+    height: 40px;
+    width: 145px;
+    font-size: 16px;
+    line-height: 36px;
+    margin-left: 10px;
+    color: var(--whitecolor);
+  }
+
+  .list-item-user-rate{
+    height: 40px;
+    width: 45px;
+    display: flex;
+    line-height: 35px;
+    position: relative;
+  }
+  .list-item-user-rate mat-icon{
+    color: var(--goldcolor);
+    top: 5px;
+    left: -3px;
+    position: absolute;
+  }
+  .list-item-user-rate-number{
+    color: var(--goldcolor);
+    position: absolute;
+    right: -6px;
+    font-size: 16px;
+  }
+.left-content-post-date{
+    width: max-content;
+    margin:  20px 50px;
+    color: var(--graycolor);
+}
+/*********************/
+.slick-carousel-content{
+    height: 450px;
+    margin: 10px auto;
+    color: var(--whitecolor);
+    width: 90%;
+
+  }
+
+  .slide{
+    margin: auto 5px;
+    height: 450px;
+    
+  }
+  .slide img{
+    margin: auto;
+    border-radius: 10px;
+  }
+
+.left-content-about-tag{
+  color: var(--whitecolor);
+  font-size: 23px;
+  width: 75%;
+  margin: 40px 20px 20px 20px;
+  line-height: 1.4;
+}
+.left-content-about-text{
+  color: var(--graycolor);
+  font-size: 16px;
+  width: 90%;
+  min-height: max-content;
+  margin: 20px 20px;
+  line-height: 2;
+
+}
+
+/***************************/
+.head-profile {
+  margin-top: 20px;
+  margin-left:20px ;
+  max-width: 100%;
+  height: 180px;
+  background-color: transparent;
+  box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+  padding: 20px;
+  display: flex;
+  color:var(--whitecolor);
+  
+  border-bottom-left-radius:0 ;
+  border-bottom-right-radius: 0;
+
+}
+
+/**************-first  content-*****************/
+.avatar{
+    top: 15px;
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.verified{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 14px;
+    left: 76px
+}
+
+/**************-secend  content-*****************/
+.secend-content{
+    width: 350px;
+    padding: 20px 20px 20px 40px ;
+}
+.head-line-1{
+    display: flex;
+}
+
+.User-name{
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 38px;
+}
+
+.User-location{
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    color:var(--graycolor);
+    color:var(--graycolor);
+
+}
+.User-location-icon{
+    font-size: 20px;
+    margin-top: 7px;
+    margin-left: 15px;
+    color:var(--graycolor);
+
+}
+
+.head-line-3{
+    margin: 30px auto;
+    display: flex;
+}
+.User-wallet{
+    font-size: 15px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    padding: 3px 15px;
+    width: max-content ;
+    border: rgb(143, 143, 143) solid 1px;
+    border-radius:15px ;
+}
+.star{
+    color: var(--goldcolor);
+    font-size: 25px;
+    margin: 0 -1px;
+}
+
+
+.third-content{
+    width: 40%;
+    position: relative;
+}
+
+.Contact-me{
+margin-top: -5px;
+margin-left: 20px;
+
+}
+.Contact-me-b{
+    width: 140px;
+    height: 40px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 12px;
+    padding: 10px 24px;
+    border: none;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    background: linear-gradient(to right, #16b897 0%, #17a78a 50%, #148a72 100%);
+
+}
+
+/***************************/
+
+.profile-details {
+  margin-top: 10px;
+  margin-left:20px ;
+  max-width: 100%;
+  height: 100px;
+  background-color: transparent;
+  box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+  display: flex;
+  color:var(--whitecolor);
+  padding: 0;
+  border-top-left-radius:0 ;
+  border-top-right-radius: 0;
+}
+.profile-details-2 {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-details-4 {
+  width: 100%;
+  height: 50%;
+  text-align: left;
+  line-height: 50px;
+  margin-left: 40px;
+}
+.profile-details-4 span{
+  font-size: 16px;
+  color: var(--graycolor);
+  margin: auto 10px;
+}
+.profile-details-4 span:first-child{
+  font-size: 18px;
+  color: var(--whitecolor);
+}
+
+
+/**********************************************************/
+
+.right-content{ 
+    box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+    margin-top: 40px ;
+    width: 420px;
+    height: max-content ;
+    color: var(--whitecolor);
+    padding-bottom: 20px;
+}
+
+.right-content-flex{
+    display: flex;
+}
+
+.right-content-left{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: 1px solid rgba(128, 128, 128, 0.3);
+    height: 50px;
+    width: 50%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+}
+.right-content-left:hover{
+    cursor: pointer;
+    background-color: var(--maincolor);
+}
+
+.right-content-right{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    height: 50px;
+    width: 50%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+}
+.right-content-right:hover{
+    cursor: pointer;
+    background-color: var(--maincolor);
+
+}
+.right-content-content{
+    height: 450px;
+    width: 100%;
+}
+
+.right-content-content-price{
+  margin: 20px 35px;
+  width: 100px;
+  height: 29px;
+  position: relative;
+}
+
+.right-content-content-price img{
+  height: 23px;
+  width: 23px;
+  position: absolute;
+  top: 3px;
+  left: 2px;
+}
+.right-content-content-price span{
+  font-size: 23px;
+  position: absolute;
+  top: 5px;
+  left: 30px;
+}
+
+.right-content-content-comment{
+  color: var(--graycolor);
+  margin: auto;
+  width: 85%;
+  height: max-content;
+  padding: 10px;
+  line-height: 1.5;
+}
+.right-content-content-comment span{
+  font-size: 16px;
+}
+.right-content-content-flex{
+  display: flex;
+}
+
+.right-content-content-delivery-time{
+  margin: 15px 0 15px 30px;
+  width: 220px;
+  height: 30px;
+  position: relative;
+}
+.right-content-content-delivery-time mat-icon{
+
+  position: absolute;
+  top: 3px;
+  left: 5px;
+}
+.right-content-content-delivery-time span{
+  font-size: 17px;
+  position: absolute;
+  top: 5px;
+  left: 35px;
+}
+.right-content-content-Revision{
+  margin: 15px 10px;
+  width: 200px;
+  height: 30px;
+  position: relative;
+
+}
+.right-content-content-Revision mat-icon{
+
+  position: absolute;
+  top: 3px;
+  left: 5px;
+}
+.right-content-content-Revision span{
+  font-size: 17px;
+  position: absolute;
+  top: 5px;
+  left: 35px;
+}
+.right-content-content-abilitys{
+  min-height: 240px;
+}
+.right-content-content-ability{
+  min-height: 33px;
+  position: relative;
+  margin: 5px 25px ;
+}
+.right-content-content-ability mat-icon{
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  color: var(--maincolor);
+}
+.right-content-content-ability span{
+  color: var(--graycolor);
+  font-size: 17px;
+  position: absolute;
+  top: 6px;
+  left: 40px;
+
+}
+/*******************************************/
+
+.Contact-me{
+  text-align: center;
+}
+.Contact-me-b{
+  width: 130px;
+  height: 38px;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 5px;
+  padding: 10px 24px;
+  border: none;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: linear-gradient(to right, #11997e 0%, #17a78a 50%, #0f6856 100%);
+  color: var(--darkcolor);
+}
+.Contact-me-b:hover{
+    color: var(--whitecolor);
+}
+/*******************************************/

@@ -1,0 +1,85 @@
+<div class="mainpage" >
+
+      
+    <ng-container [ngSwitch]="stepperOrientation | async">
+
+      </ng-container>
+      
+      <mat-stepper
+        class="example-stepper"
+        [orientation]="(stepperOrientation | async)!"
+        [linear]="isLinear"
+        >
+
+        <mat-step [stepControl]="firstFormGroup" label="Fill out your name" >
+          <form [formGroup]="firstFormGroup">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Wallet</mat-label>
+              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+
+                <input  type="image" formControlName="firstCtrl" required>
+
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+
+
+
+        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+
+
+
+        <mat-step [stepControl]="thirdFormGroup" label="Fill out your phone number">
+          <form [formGroup]="thirdFormGroup">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone number</mat-label>
+              <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+
+
+
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+
+</div>

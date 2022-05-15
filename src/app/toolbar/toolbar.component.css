@@ -1,0 +1,63 @@
+
+.toolbar-max {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: var(--darktranscolor);
+z-index: 10;
+}
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  max-width: 1700px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  background-color: var(--darktranscolor);
+  color: var(--whitecolor);
+
+
+}
+
+
+
+
+.toolbar span {
+  font-size: 25px;
+  color: var(--whitecolor);
+}
+.toolbar img {
+  margin-left: 50px;
+  width: 30px;
+  height: 30px;
+}
+.toolbar a {
+  font-size: 17px;
+  margin: auto 16px;
+  color: var(--graycolor);
+}
+.toolbar a:hover{
+  color: var(--whitecolor);
+}
+.toolbar-right {
+  margin-right: 30px;
+  margin-left: 10px;
+}
+.toolbar button{
+  background-color: var(--maincolor);
+  font-size: 17px;
+}
+.toolbar button:hover{
+  filter: grayscale(0.7);
+}

@@ -1,1 +1,140 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--whtiecolor);
+  background: var(--darkcolor);
+  font-family: 'Roboto', sans-serif;
+}
+a,button {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--saltcolor);
+}
+
+.fas {
+  font-size: 27px;
+}
+ul {
+  list-style-type: none;
+}
+
+:root {
+  --darkcolor: #120f1a;
+  --soft-darkcolor:#312e3d;
+  --whitecolor: #e2e2e2;
+  --graycolor:  #8a8d8e;
+  --maincolor: #16b998;
+  --maintranscolor: #16b99871;
+  --secendcolor:  #1772b0;
+  --darktranscolor:#120f1ace;
+  --goldcolor:rgb(184, 156, 0);
+/*
+  --darkcolor: #1d1931;
+  --soft-darkcolor:rgb(60, 55, 77);
+  --whitecolor: #e2e2e2;
+  --graycolor:  #8a8d8e;
+  --maincolor: #16b998;
+  --maintranscolor: #1d193171;
+  --secendcolor:  #1772b0;
+  --darktranscolor:#1d1931ce;
+  --goldcolor:rgb(184, 156, 0);
+  */
+}
+/*********************-Mat Steper********************/
+.mat-step-text-label{
+  color: white !important;
+}
+.basic-container .mat-step-header .mat-step-icon-selected {
+  background-color: #6cb73a;
+  color: #fff;
+}
+
+.mat-step-header .mat-step-icon {
+    color: #fff;
+}
+
+/*********************-Active Button********************/
+
+.activebutton
+{
+   color: var(--maincolor) !important;
+ }
+/*********************-Snack Bar************************/
+
+.red-snackbar {
+  background: #da220a;
+  color: var(--whitecolor);
+}
+.green-snackbar {
+  background: #088f1f;
+  color: var(--whitecolor);
+}
+/*********************-Dialog***************************/
+
+mat-dialog-container {
+  background-color: var(--soft-darkcolor)  !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.backdropBackground{
+  background-color: #120f1aa2;
+}
+/********************* -Slick ***************************/
+
+.slick-prev:before,
+.slick-next:before
+{
+  color: white !important;
+  font-size: 28px !important ;
+  margin: -18px;
+}
+
+/********************* -Form ***************************/
+
+.mat-form-field-label {
+  color: white !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: white !important;
+}
+
+.mat-input-underline {
+  background-color: white !important;
+}
+.mat-form-field-appearance .mat-form-field-underline::before {
+  background-color: white !important;
+}
+
+.mat-input-element::placeholder{
+  color: var(--graycolor) !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline{
+  color: var(--graycolor) !important;
+}
+
+
+/********************* -Tooltip ***************************/
+
+.mat-tooltip {
+  background-color: var(--soft-darkcolor) !important;
+  color: var(--whitecolor)  !important;
+  font-size: 12px;
+}
+/********************* -Divider ***************************/
+
+mat-divider{
+  margin: auto !important;
+  width: 95% !important ;
+  background-color: rgba(184, 184, 184, 0.24) !important;
+}
+
+/********************* --------- ***************************/

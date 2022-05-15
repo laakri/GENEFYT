@@ -1,0 +1,123 @@
+<div class="mainpage" *ngFor="let user of users" >
+    
+
+    <mat-card class="head-profile" >
+        <img src="../../assets/profile-header.png" alt="dza" class="profile-header-img" >
+    <div class="first-content">
+
+            <img src="../../assets/avatar.png" alt="avatar" class="avatar">
+        <div  >
+            <img src="../../assets/verified-dark.png" alt="verified" class="verified">
+        </div>
+    </div>
+
+
+
+    <div class="secend-content" >
+
+
+        <div class="head-line-1" >
+        <div class="User-name"  >{{ user.name }}</div>
+        <mat-icon class="User-location-icon" >location_on</mat-icon> <div class="User-location" > Tunisia </div>
+        </div>
+
+
+        <div class="User-rate">
+                <mat-icon >star</mat-icon>
+                <span>4.9</span>
+        </div>
+
+
+        <div class="head-line-3" >
+            <a  
+            class="User-wallet"
+            (click)="copyHeroName()"  
+            matTooltip="Copy"
+            matTooltipHideDelay="10">
+            
+            <div  > {{reswallet}}</div></a>
+            <div class="Contact-me" >
+                <button mat-raised-button color="primary" class="Contact-me-b">Contact Me</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+      </mat-card>
+
+
+      <div class="big-secend-content" >
+        <div class="left-secend-content" >
+            <mat-card class="first-left-secend-content" >
+                <div class="mat-list" >
+                    
+                    
+                    <div class="mat-list-item">
+                        <div class="head-text">From</div>
+                        <div class="under-head-text" >Tunisia</div>
+                    </div>
+                    <mat-divider></mat-divider>
+
+                    <div class="mat-list-item">
+                        <div class="head-text">Member since</div>
+                        <div class="under-head-text" >
+                            {{user.createdAt }}
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="mat-list-item" >
+                        <div class="head-text">Avg. response time</div>
+                        <div class="under-head-text"  *ngIf="user.responsTime == null" >None</div>
+                        <div class="under-head-text"  *ngIf="user.responsTime">{{user.responsTime}}</div>
+                    </div>
+                    
+                </div>
+            </mat-card>
+
+            <mat-card class="secend-left-secend-content" >
+                <div class="mat-list" >
+                    
+                    
+                    <div class="mat-list-item">
+                        <div class="head-text">Description</div>
+                        <div class="under-head-text"  *ngIf="user.description == null" >None</div>
+                        <div class="under-head-text"  *ngIf="user.description">{{user.description}}</div>
+                    </div>
+                    <mat-divider></mat-divider>
+
+                    <div class="mat-list-item">
+                        <div class="head-text">Skills</div>
+                        <div class="under-head-text"  *ngIf="user.skills == null" >None</div>
+                        <div class="under-head-text"  *ngIf="user.skills">
+                            <mat-chip-list aria-label="Fish selection">
+                            <mat-chip>NFT</mat-chip>
+                            <mat-chip>Contract maker</mat-chip>
+                            <mat-chip>web3 developer</mat-chip>
+                            <mat-chip>Maker</mat-chip>
+                            <mat-chip>web3</mat-chip>
+                          </mat-chip-list>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-card>
+        </div>
+        <div class="right-secend-content">
+            <mat-card class="first-right-secend-content" >
+                <mat-card class="first-right-secend-content-empty" >
+                    <span>It seems that you don't have any active Gigs. Get selling!</span>
+                    <button mat-raised-button >Create New One</button>
+                </mat-card>
+            </mat-card>
+        </div>
+
+      </div>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,31 @@
+.mainpage {
+    max-width: 1100px;
+    margin:  auto;
+    min-height: 730px;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+  
+form {
+    margin: 60px auto ;
+    width: 90%;
+    height: max-content;
+}
+.mat-form-field{
+    margin: 20px 30px ;
+    width: 80%;
+
+}
+
+mat-stepper{
+    min-height: 730px;
+    background-color: transparent;
+    color: var(--whitecolor);
+}
+button{
+    margin: 30px ; 
+    background-color: var(--maincolor);
+    color: var(--darkcolor);
+}
