@@ -16,6 +16,10 @@ import { SuccesComponent } from './succes/succes.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddInformationComponent } from './add-information/add-information.component';
+import {MatSelectModule} from '@angular/material/select';
+import { CreateGigComponent } from './create-gig/create-gig.component';
+import { ErrorInterceptor } from './error-interceptor';
+import { AuthInterceptor } from './login/login.interceptor';
 
 
 
@@ -43,10 +47,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatChipsModule} from '@angular/material/chips';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {SlickCarouselModule } from 'ngx-slick-carousel';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatSliderModule} from '@angular/material/slider';
 
 /* ********************************************* */
 @NgModule({
@@ -63,7 +68,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     PostPageComponent,
     ErrorComponent,
     SuccesComponent,
-    AddInformationComponent
+    AddInformationComponent,
+    CreateGigComponent
   ],
   imports: [
     BrowserModule,
@@ -97,10 +103,14 @@ import {MatStepperModule} from '@angular/material/stepper';
     ClipboardModule,
     MatTooltipModule,
     MatStepperModule,
+    MatSelectModule,
     RouterModule.forRoot([ ]),
-
+    MatSliderModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   entryComponents:[ErrorComponent]
 })

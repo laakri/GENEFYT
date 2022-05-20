@@ -24,14 +24,16 @@ constructor(private http: HttpClient, private router: Router) {}
 
 
 addUser(  name : string ,email :string,  password :string){
-    const user :User= {
+  const user: User = {
       name: name, email: email, password: password,
+      userId:"",
       Wallet: "",
       imgPath: "",
+      country: "",
       verified: "",
+      occupation: "",
       rate: "",
       responsTime: "",
-      languages: "",
       skills: "",
       description: "",
       createdAt: "",
@@ -39,7 +41,7 @@ addUser(  name : string ,email :string,  password :string){
     };
     this.http.post<{message :string }>('http://localhost:4401/api/users/signup', user)
     .subscribe(() => {
-      /*this.login(email,password)*/
+      this.login(email,password)
       console.log('User Added !')
     },error=>{
        console.log(error);
@@ -73,13 +75,15 @@ getAuthStatusListener() {
 login(email: string, password: string) {
   const user : User = {
     email: email, password: password,
+    userId:"",
     name: "",
     Wallet: "",
     imgPath: "",
+    country: "",
     verified: "",
+    occupation: "",
     rate: "",
     responsTime: "",
-    languages: "",
     skills: "",
     description: "",
     createdAt: "",
@@ -196,6 +200,32 @@ private getAuthData() {
 
 
 
+modifyUser( userId: string, Wallet : string ,country :string,    responsTime :string,  description :string){
+  const user: User = {
+    userId:userId,
+    name: "",
+    email: "",
+    password: "",
+    Wallet: Wallet,
+    imgPath: "",
+    country: country,
+    verified: "yes",
+    occupation: "",
+    rate: "",
+    responsTime: responsTime,
+    skills: "",
+    description: description,
+    createdAt: "",
+    updatedAt: "",
+  };
+  this.http.patch<{message :string }>('http://localhost:4401/api/users/up/' , user)
+  .subscribe(() => {
+    console.log('User Updated !')
+  },error=>{
+     console.log(error);
+  }
+  );
+}
 
 
 

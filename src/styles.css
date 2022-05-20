@@ -34,6 +34,7 @@ ul {
   --maintranscolor: #16b99871;
   --secendcolor:  #1772b0;
   --darktranscolor:#120f1ace;
+  --soft-darktranscolor:#312e3d69;
   --goldcolor:rgb(184, 156, 0);
 /*
   --darkcolor: #1d1931;
@@ -102,7 +103,13 @@ mat-dialog-container {
 .mat-form-field-label {
   color: white !important;
 }
+.mat-select-arrow{
+  color: white !important;
+}
+.mat-select-min-line {
+  color: white !important;
 
+}
 .mat-focused .mat-form-field-label {
   color: white !important;
 }
@@ -138,3 +145,15 @@ mat-divider{
 }
 
 /********************* --------- ***************************/
+.mat-stepper-horizontal-line{
+  background-color: rgba(128, 128, 128, 0.493) !important;
+}
+.mat-step-icon{
+  background-color: var(--graycolor) !important;
+  color: var(--whtiecolor) !important ;
+}
+
+
+.mat-step-icon-selected{
+  background-color: var(--maincolor) !important;
+}

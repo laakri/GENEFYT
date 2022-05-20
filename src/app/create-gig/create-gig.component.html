@@ -1,0 +1,97 @@
+<div class="mainpage" >
+
+      
+    <ng-container [ngSwitch]="stepperOrientation | async">
+
+      </ng-container>
+      <form  (submit)="addimfo(formGroup)"  [formGroup]="formGroup" >
+      
+      <mat-stepper
+        class="example-stepper"
+        [orientation]="(stepperOrientation | async)!"
+        [linear]="isLinear"
+        formArrayName="formArray"
+        >
+<!------------------------------------First------------------------------------------------->
+
+        <mat-step  label="Fill out your name"  formGroupName="0" [stepControl]="formArray?.get([0])!">
+          <div class="mat-step-content" >
+
+
+            <mat-form-field appearance="outline" >
+                <mat-label>Categorie</mat-label>
+                <input matInput  placeholder="0xAAA.AAAAA" 
+                formControlName="categorieFormCtrl"  required>
+              </mat-form-field>    
+
+              <mat-form-field appearance="outline" >
+                <mat-label>Object</mat-label>
+                <input matInput  placeholder="0xAAA.AAAAA" 
+                formControlName="objectFormCtrl"  required>
+              </mat-form-field>   
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput name="description"  placeholder="Ex. It makes me feel..." 
+                formControlName="descriptionFormCtrl" required></textarea>
+              </mat-form-field>
+
+
+
+
+            <div>
+              <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </div>
+        </mat-step>
+
+
+<!---------------------------------------Secend------------------------------------------------>
+
+        <mat-step  label="Fill out your address" formGroupName="1" [stepControl]="formArray?.get([1])!">
+          <div class="mat-step-content" >
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput name="description"  placeholder="Ex. It makes me feel..." 
+              formControlName="descriptionFormCtrl" required></textarea>
+            </mat-form-field>
+
+            <div>
+              <button mat-button type="button" matStepperPrevious>Back</button>
+              <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </div>
+        </mat-step>
+
+
+
+<!----------------------------------------Third------------------------------------------->
+
+
+<mat-step>
+  <ng-template matStepLabel>Done</ng-template>
+  <div class="mat-step-content" >
+  <div  class="done-div" >
+    <p>You are now done </p>
+
+    <span class='material-icons '>check_circle_outline</span>
+
+  </div>
+  <div>
+    <button mat-button type="button" matStepperPrevious>Back</button>
+    <button mat-button type="submit">Submit</button>
+  </div>
+</div>
+
+
+
+
+</mat-step>
+</mat-stepper>
+
+</form>
+
+
+
+</div>

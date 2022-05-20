@@ -25,28 +25,38 @@ getusers(UserId: string){
       
       return usertData.users.map(
         (user: {
-          _id: any; name: any;
-          email: any; Wallet:any;
-          imgPath:any; verified:any;
-          rate:any; responsTime:any;
-          languages:any; skills:any;
+          _id: any;
+          name: any;
+          email: any;
+          Wallet: any;
+          imgPath: any;
+          country: any;
+          verified: any;
+          occupation: any;
+          rate: any;
+          responsTime: any;
+          languages: any;
+          skills: any;
           description:any; 
-          createdAt: any; updatedAt: any; 
+          createdAt: any;
+          updatedAt: any;
         }) => {
         return{
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        Wallet : user.Wallet,
-        imgPath : user.imgPath,
-        verified : user.verified,
-        rate : user.rate,
-        responsTime : user.responsTime,
-        languages : user.languages,
-        skills : user.skills,
-        description : user.description,
-        createdAt : user.createdAt,
-        updatedAt : user.updatedAt
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          Wallet: user.Wallet,
+          country : user.country,
+          imgPath : user.imgPath,
+          verified: user.verified,
+          occupation: user.occupation,
+          rate : user.rate,
+          responsTime : user.responsTime,
+          languages : user.languages,
+          skills : user.skills,
+          description : user.description,
+          createdAt : user.createdAt,
+          updatedAt : user.updatedAt
         };
       });
     }))

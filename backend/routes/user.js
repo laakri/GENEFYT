@@ -2,8 +2,10 @@ const express =require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const user = require("../models/user");
 const router = express.Router();
 
+/*************-Signup-********** */
 
 router.post("/signup", (req, res, next) =>{
   bcrypt.hash(req.body.password, 10)
@@ -31,6 +33,7 @@ router.post("/signup", (req, res, next) =>{
   });
 
 });
+/*************-Login-********** */
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
@@ -38,7 +41,7 @@ router.post("/login", (req, res, next) => {
     .then(user => {
       if (!user) {
         return res.status(401).json({
-          message: "Incorrect phone number !"
+          message: "Incorrect Email !"
         });
       }
       fetchedUser = user;
@@ -70,6 +73,7 @@ router.post("/login", (req, res, next) => {
     });
 });
 
+/*************-Get Users-********** */
 
 router.get('/data/:id', (req,res,next)=> {
 
@@ -84,73 +88,31 @@ router.get('/data/:id', (req,res,next)=> {
   .catch(err => {
     console.log(err)
     res.status(500).json({
-      error: err
+      error: err,
+      message: "Profile Failed !"
     });
   });
 });
 
+/*************-Update-********** */
+router.patch('/up', async (req, res, next) => {
+  try {
+    const id =  req.body.id;
+    const updates = req.body  ;
+    const options = { new: true };
 
 
-
-/*
-router.get('/data', (req,res,next)=> {
-
-  User.find().select(['-password','-__v'])
-  .then(documents => {
-    res.status(200).json({
-      message : 'Users Fetched!',
-      users :documents
-    });
-  })
-  .catch(err => {
-    console.log(err)
+    const userYP = await User.findByIdAndUpdate(id,updates,options);
+    res.send(userYP);
+    console.log('User updated !')
+  } catch (error) {
+    console.log(error.message);
     res.status(500).json({
-      message : 'Can"t fetch Users!',
-      error: err
+      error: err,
+      message: "User update failed !"
     });
-  });
+  }
 });
 
-router.post("/signup/admin", (req, res, next) =>{
-  bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-      const user = new User({
-      name: req.body.name,
-      email:  req.body.email,
-      password : hash,
-      roles :["admin"]
-      });
-
-    user.save()
-    .then(result => {
-      res.status(201).json({
-        message:"user created!",
-      });
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({
-        error: err,
-        message:"This phone number already exited !",
-      });
-    });
-
-  });
-
-});
-
-router.delete("/:id", (req, res, next) => {
-  User.deleteOne({ _id: req.params.id }).then(result => {
-    res.status(200).json({ message: "User deleted !" })
-  })
-  .catch(err => {
-    console.log(err);
-    return res.status(500).json({
-      message: "Problem In deleting Users !"
-    });
-  });
-});
-
-*/
 
 module.exports = router;

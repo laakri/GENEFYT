@@ -17,8 +17,7 @@ const app = express();
 
 //conection to data
 mongoose.connect(
-    "mongodb+srv://Laaki:QDZjoJOqVMtIPDEx@cluster0.gwhy6.mongodb.net/GENEFYT?retryWrites=true&w=majority"
-  )
+    "mongodb+srv://Laaki:QDZjoJOqVMtIPDEx@cluster0.gwhy6.mongodb.net/GENEFYT?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to database!");
   })

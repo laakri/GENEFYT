@@ -16,12 +16,11 @@ export class ProfileComponent implements OnInit {
   private routeSub: Subscription | undefined;
   userSub: Subscription = new Subscription;
 
-  wallet="0xBc76599d5C5E469A04Bd43C25c58aA73ee3Ed7a8";
+  wallet2!: string;
   first!: String;
   last!: String;
   reswallet!: String;
   date: Date | undefined;
-
 
 
   constructor(private clipboard: Clipboard,public route: ActivatedRoute,
@@ -42,15 +41,37 @@ export class ProfileComponent implements OnInit {
     .subscribe((users:User[]) => {
        this.users =users;
        console.log(this.users);
-        
+      this.wallet2 = this.users[0].Wallet;
+      this.first = this.wallet2.substring(0, 6);
+      this.last = this.wallet2.substring(this.wallet2.length - 5);
+      this.reswallet = this.first + "..." + this.last;
       });
 
 
-    this.first = this.wallet.substring(0, 6);
-    this.last = this.wallet.substring(this.wallet.length - 5);
-    this.reswallet=this.first+"..."+this.last;
+
   }
   copyHeroName() {
-    this.clipboard.copy(this.wallet);
+    this.clipboard.copy(this.users[0].Wallet);
   }
+
+
+  slides = [
+    {img: "../../assets/postpage.png",
+  },
+    {img: "../../assets/nftpic2.png"},
+    {img: "../../assets/nftpic3.png"},
+    {img: "../../assets/nftpic4.png"},
+    {img: "../../assets/nftpic5.png"},
+  ];
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 1};
+  
+
+
+
+
+
+
+
+
+
 }

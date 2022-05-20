@@ -4,82 +4,142 @@
     <ng-container [ngSwitch]="stepperOrientation | async">
 
       </ng-container>
+      <form  (submit)="addimfo(formGroup)"  [formGroup]="formGroup" >
       
       <mat-stepper
         class="example-stepper"
         [orientation]="(stepperOrientation | async)!"
         [linear]="isLinear"
+        formArrayName="formArray"
         >
+<!------------------------------------First------------------------------------------------->
 
-        <mat-step [stepControl]="firstFormGroup" label="Fill out your name" >
-          <form [formGroup]="firstFormGroup">
+        <mat-step  label="Fill out your name"  formGroupName="0" [stepControl]="formArray?.get([0])!">
+          <div class="mat-step-content" >
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" >
               <mat-label>Wallet</mat-label>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              <input matInput  placeholder="0xAAA.AAAAA" 
+              formControlName="walletFormCtrl"  required>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Country</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <input matInput  placeholder="Tunisia , Algeria"  
+                formControlName="countryFormCtrl" required>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Country</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
 
-                <input  type="image" formControlName="firstCtrl" required>
+            <div class="responsetime">
+
+              <mat-form-field appearance="outline">
+                  <mat-label>Avg. response time</mat-label>
+                  <input matInput placeholder="1 houre"
+                  formControlName="responseTimeFormCtrl"
+                  min="1"
+                  max="23"
+                  [(ngModel)]="value"
+                  type="number" required>
+              </mat-form-field>
+              
+
+              <mat-form-field appearance="outline">
+                <mat-label>Time</mat-label>
+                <mat-select 
+                formControlName="responseTimedaysFormCtrl"
+                [(ngModel)]="valuetype">
+                  <mat-option value="Hour">Hour</mat-option>
+                  <mat-option value="Day">Day</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+            <div class="profile-pic-flex" >
+                <div class="profile-pic-text"  >Upload Profile picture</div>
+                  <button type="button" class="profile-pic"
+                  (click)="filepicker.click()" >
+                  <span class="material-icons"  >file_upload</span>
+                  </button>
+                  <input type="file" #filepicker (change)="onFilePicked($event)" >
+                <div *ngIf="filePreview != '' && filePreview" class="filepreview">
+                  <p>{{fileName}}</p>
+                </div>
+            </div>
 
             <div>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button type="button" matStepperNext>Next</button>
             </div>
-          </form>
-        </mat-step>
-
-
-
-
-        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-          <form [formGroup]="secondFormGroup">
-            <mat-form-field appearance="outline">
-              <mat-label>Address</mat-label>
-              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                     required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-
-
-
-
-        <mat-step [stepControl]="thirdFormGroup" label="Fill out your phone number">
-          <form [formGroup]="thirdFormGroup">
-            <mat-form-field appearance="outline">
-              <mat-label>Phone number</mat-label>
-              <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-
-
-
-
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
           </div>
         </mat-step>
-      </mat-stepper>
+
+
+<!---------------------------------------Secend------------------------------------------------>
+
+        <mat-step  label="Fill out your address" formGroupName="1" [stepControl]="formArray?.get([1])!">
+          <div class="mat-step-content" >
+            
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Occupation</mat-label>
+                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput name="description"  placeholder="Ex. It makes me feel..." 
+              formControlName="descriptionFormCtrl" required></textarea>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+              <mat-label>Skills</mat-label>
+              <mat-select  multiple>
+                <mat-option *ngFor="let skill of toppingList" [value]="skill" required>{{skill}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <div>
+              <button mat-button type="button" matStepperPrevious>Back</button>
+              <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </div>
+        </mat-step>
+
+
+
+<!----------------------------------------Third------------------------------------------->
+
+
+<mat-step>
+  <ng-template matStepLabel>Done</ng-template>
+  <div class="mat-step-content" >
+  <div  class="done-div" >
+    <p>You are now done </p>
+
+    <span class='material-icons '>check_circle_outline</span>
+
+  </div>
+  <div>
+    <button mat-button type="button" matStepperPrevious>Back</button>
+    <button mat-button type="submit">Submit</button>
+  </div>
+</div>
+
+
+
+
+</mat-step>
+</mat-stepper>
+
+</form>
+
+
 
 </div>

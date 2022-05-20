@@ -5,6 +5,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { AddInformationComponent } from './add-information/add-information.component';
+import { CreateGigComponent } from './create-gig/create-gig.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'Profile',component:ProfileComponent,},
   {path:'PostPage',component:PostPageComponent,},
   {path:'information',component:AddInformationComponent,},
+  {path:'CreateGig',component:CreateGigComponent,},
 
 
 

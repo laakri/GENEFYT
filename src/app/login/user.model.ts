@@ -1,16 +1,18 @@
 export interface User {
+    userId: string;
     name:string;
     email:string;
     password:string;
-    Wallet:String;
-    imgPath: String ;
-    verified: String ; 
-    rate: String ;
-    responsTime: String ;
-    languages: String ;
-    skills: String;
-    description: String ;
-    createdAt: String ;
-    updatedAt: String ;
+    Wallet: string;
+    country: string;
+    imgPath: string ;
+    verified: string; 
+    occupation: string;
+    rate: string ;
+    responsTime: string ;
+    skills: string;
+    description: string ;
+    createdAt: string ;
+    updatedAt: string ;
   }
   
