@@ -14,7 +14,7 @@
         >
 <!------------------------------------First------------------------------------------------->
 
-        <mat-step  label="Fill out your name"  formGroupName="0" [stepControl]="formArray?.get([0])!">
+        <mat-step  label="Fill out your Personal Informations"  formGroupName="0" [stepControl]="formArray?.get([0])!">
           <div class="mat-step-content" >
 
             <mat-form-field appearance="outline" >
@@ -54,16 +54,24 @@
               </mat-form-field>
 
             </div>
+            
             <div class="profile-pic-flex" >
                 <div class="profile-pic-text"  >Upload Profile picture</div>
                   <button type="button" class="profile-pic"
                   (click)="filepicker.click()" >
-                  <span class="material-icons"  >file_upload</span>
+                  
+                  
+                  <div *ngIf="imagePreview != '' && imagePreview" class="imagePreview">
+                    <img [src]="imagePreview" alt="sdf">
+                  </div>
+                    <span class="material-icons"  >file_upload</span>
                   </button>
-                  <input type="file" #filepicker (change)="onFilePicked($event)" >
-                <div *ngIf="filePreview != '' && filePreview" class="filepreview">
-                  <p>{{fileName}}</p>
-                </div>
+                  <input type="file"  
+                  formControlName="filePathFormCtrl"
+                  #filepicker
+                  (change)="onFilePicked($event)" 
+                  >
+
             </div>
 
             <div>
@@ -75,13 +83,16 @@
 
 <!---------------------------------------Secend------------------------------------------------>
 
-        <mat-step  label="Fill out your address" formGroupName="1" [stepControl]="formArray?.get([1])!">
+        <mat-step  label="Fill out Account Informations" formGroupName="1" [stepControl]="formArray?.get([1])!">
           <div class="mat-step-content" >
             
 
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Occupation</mat-label>
-                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                
+                <input type="text" matInput [formControl]="myControl" 
+                formControlName="occupationFormCtrl" [matAutocomplete]="auto">
+
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                   <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                     {{option.name}}

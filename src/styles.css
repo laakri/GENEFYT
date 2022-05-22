@@ -48,18 +48,7 @@ ul {
   --goldcolor:rgb(184, 156, 0);
   */
 }
-/*********************-Mat Steper********************/
-.mat-step-text-label{
-  color: white !important;
-}
-.basic-container .mat-step-header .mat-step-icon-selected {
-  background-color: #6cb73a;
-  color: #fff;
-}
 
-.mat-step-header .mat-step-icon {
-    color: #fff;
-}
 
 /*********************-Active Button********************/
 
@@ -156,4 +145,26 @@ mat-divider{
 
 .mat-step-icon-selected{
   background-color: var(--maincolor) !important;
+}
+.mat-step-text-label{
+  color: white !important;
+}
+.basic-container .mat-step-header .mat-step-icon-selected {
+  background-color: #6cb73a;
+  color: #fff;
+}
+
+.mat-step-header .mat-step-icon {
+    color: #fff;
+}
+
+/*********************-Mat Checkbox********************/
+
+.mat-checkbox-checked
+.mat-checkbox-background {
+  background-color: var(--maincolor) !important;
+}
+
+.mat-checkbox-frame{
+  background-color: #ffffff !important;
 }

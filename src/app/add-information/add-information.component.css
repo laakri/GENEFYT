@@ -65,8 +65,14 @@ input[type="file"] {
 }
 
 .profile-pic span {
-    line-height: 140px;
+    position: absolute;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
     color: white;
+    z-index: 1;
+
 }
 .profile-pic input {
     position: absolute;
@@ -77,6 +83,20 @@ input[type="file"] {
     border-radius: 50%;
 
 }
+.imagePreview{
+    height: 145px;
+    width: 145px;
+    margin-left: -5px;
+    margin-top: 0;
+    z-index: -1;
+}
+.imagePreview img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+
+}
+/*********************************************************/
 .done-div{
     margin: 100px 40px;
     height: 40px;
@@ -110,3 +130,4 @@ input[type="file"] {
       flex-direction: column;
     }
   }
+

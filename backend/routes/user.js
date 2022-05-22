@@ -97,8 +97,9 @@ router.get('/data/:id', (req,res,next)=> {
 /*************-Update-********** */
 router.patch('/up', async (req, res, next) => {
   try {
-    const id =  req.body.id;
-    const updates = req.body  ;
+    const id =  req.body.userId;
+    const updates = req.body;
+    console.log(updates);
     const options = { new: true };
 
 

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Subject}from 'rxjs'
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
+import { UserToUpdate } from "./userToUpdate.model";
 
 
 @Injectable({providedIn: 'root'})
@@ -200,23 +201,19 @@ private getAuthData() {
 
 
 
-modifyUser( userId: string, Wallet : string ,country :string,    responsTime :string,  description :string){
-  const user: User = {
+  modifyUser(userId: string, Wallet: string, country: string, responsTime: string,
+    imgPath: string, description: string, occupation: string){
+  
+  const user: UserToUpdate = {
     userId:userId,
-    name: "",
-    email: "",
-    password: "",
     Wallet: Wallet,
-    imgPath: "",
     country: country,
-    verified: "yes",
-    occupation: "",
-    rate: "",
     responsTime: responsTime,
+    imgPath: imgPath,
+    occupation: occupation,
+    verified: "yes",
     skills: "",
     description: description,
-    createdAt: "",
-    updatedAt: "",
   };
   this.http.patch<{message :string }>('http://localhost:4401/api/users/up/' , user)
   .subscribe(() => {

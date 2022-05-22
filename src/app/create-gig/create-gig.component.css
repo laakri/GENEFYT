@@ -42,22 +42,21 @@ input[type="file"] {
 }
 .profile-pic-text{
     font-size: 16px;
-    margin-left: 5px;
-    margin: auto;
-    border: gray 1px solid;
     padding: 13px 10px ;
     border-radius: 5px;
+    width: max-content;
 
 }
 .profile-pic{
     margin-top: 20px;
     margin-bottom: 10px;
-    height: 150px ;
-    width: 150px;
+    margin-left: 0;
+    height: 150px;
+    width: 250px;
     border: 2px solid gray;
-    text-align: center;
-    border-radius: 50%;
+    border-radius: 10px;
     position: relative;
+    background-color: transparent;
 
 }
 .profile-pic:hover{
@@ -66,7 +65,14 @@ input[type="file"] {
 }
 
 .profile-pic span {
-    line-height: 150px;
+    position: absolute;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    z-index: 1;
+
 }
 .profile-pic input {
     position: absolute;
@@ -77,6 +83,20 @@ input[type="file"] {
     border-radius: 50%;
 
 }
+.imagePreview{
+    height: 145px;
+    width: 245px;
+    margin-left: -5px;
+    margin-top: 0;
+    z-index: -1;
+}
+.imagePreview img {
+    height: 100%;
+    width: 100%;
+    border-radius: 9px;
+
+}
+/*******************************************/
 .done-div{
     margin: 100px 40px;
     height: 40px;
@@ -96,4 +116,82 @@ input[type="file"] {
 .done-div p{
     font-size: 16px;
     line-height:42px;
+}
+
+
+
+
+
+
+/**********************-Secend stepper-**********************/
+.secend-step-content-flex{
+    width: 100%;
+    min-height: 420px;
+    display: flex;
+}
+
+.secend-step-content{
+    margin: 30px 10px;
+    width: 48%;
+    min-height: 400px;
+    border: solid gray 1px;
+    border-radius: 10px;
+    position: relative;
+}
+.secend-step-content .mat-form-field{
+    margin: 20px auto -20px 20px;
+    padding: 0;
+    width: 90%;
+}
+.secend-step-content label{
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    height: 30px;
+    width: 80px;
+    background-color: var(--darkcolor);
+}
+.secend-step-content-checkbox{
+    padding: 15px;
+    margin: 10px;
+    width:max-content;
+}
+.secend-step-content-time{
+    margin: 20px auto 0 20px;
+    display: flex;
+    width: 90%;
+    height: max-content;
+
+}
+.secend-step-content-time .mat-form-field{
+    margin: 10px auto;
+    margin-left: 5px;
+    width: 48%;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 800px) {
+    .secend-step-content-time  {
+      flex-direction: column;
+      border: 1px solid gray ;
+      border-radius: 5px;
+    }
+    .secend-step-content-time .mat-form-field{
+        width: 95%;
+    }
+
+    .secend-step-content-flex {
+      flex-direction: column;
+    }
+    .secend-step-content{
+        width: 100%;
+  }
 }

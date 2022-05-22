@@ -2,7 +2,7 @@ import { UsersService } from './../login/user.service';
 import { Component, OnInit } from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {StepperOrientation} from '@angular/material/stepper';
-import {concat, Observable} from 'rxjs';
+import { Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {
   AbstractControl,
@@ -22,13 +22,13 @@ export interface User {
 
 export class AddInformationComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = false;
+  isLinear = true;
   myControl = new FormControl();
   filteredOptions!: Observable<User[]>;
   toppings = new FormControl();
   public userId :any;
-  filePreview!: string;
-  fileName!:string;
+  imagePreview!: string;
+  imageName!:string;
   value = 1;
   valuetype = "Hour";
   Alltime!: string;
@@ -61,6 +61,10 @@ export class AddInformationComponent implements OnInit {
   }
   
   ngOnInit(): void {
+
+    this.userId= this.UsersService.getUserId();
+
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => (typeof value === 'string' ? value : value.name)),
@@ -78,54 +82,48 @@ export class AddInformationComponent implements OnInit {
           filePathFormCtrl: ['', Validators.required],
         }),
         this._formBuilder.group({
-          descriptionFormCtrl: ['', Validators.required]
+          descriptionFormCtrl: ['', Validators.required],
+          occupationFormCtrl: ['', Validators.required],
+          
         }),
       ])
     });
 
 
-    this.userId= this.UsersService.getUserId();
-
-
-
   }
   addimfo(form : FormGroup ){
-    /*if (form.invalid) {
+    if (form.invalid) {
       console.log('form invalid !')
       return
-    }*/
+    }
+
     this.Alltime =form.value.formArray[0].responseTimeFormCtrl+" "+ form.value.formArray[0].responseTimedaysFormCtrl;
     this.UsersService.modifyUser(
       this.userId,
       form.value.formArray[0].walletFormCtrl,
       form.value.formArray[0].countryFormCtrl,
       this.Alltime,
+      form.value.formArray[0].filePathFormCtrl,
+
       form.value.formArray[1].descriptionFormCtrl,
+      form.value.formArray[1].occupationFormCtrl.name,
       );
 
 
-    console.log(
-      form.value.formArray[0].walletFormCtrl,
-      form.value.formArray[0].countryFormCtrl,
-      this.Alltime,
-      form.value.formArray[1].descriptionFormCtrl,
-      );
   
   }
   
 onFilePicked(event: Event) {
   const file =((event.target as HTMLInputElement ).files as FileList)[0];
   this.formGroup.patchValue({ filePath: file });
-  ( (this.formGroup.get('filePath') as any ).updateValueAndValidity());
+  ((this.formGroup.get('filePath') as any));
   const reader = new FileReader();
   reader.onload =() => {
-    this.filePreview = (reader.result as string );
+    this.imagePreview = (reader.result as string );
   };
   reader.readAsDataURL(file);
-  this.fileName = file.name;
+  this.imageName = file.name;
 }
-  
-
   
   
 toppingList: string[] = [

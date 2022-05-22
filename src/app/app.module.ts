@@ -52,6 +52,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 /* ********************************************* */
 @NgModule({
@@ -105,7 +106,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatStepperModule,
     MatSelectModule,
     RouterModule.forRoot([ ]),
-    MatSliderModule
+    MatSliderModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

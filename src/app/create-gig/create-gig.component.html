@@ -14,15 +14,23 @@
         >
 <!------------------------------------First------------------------------------------------->
 
-        <mat-step  label="Fill out your name"  formGroupName="0" [stepControl]="formArray?.get([0])!">
+        <mat-step  label="Fill out your Gig Type"  formGroupName="0" [stepControl]="formArray?.get([0])!">
           <div class="mat-step-content" >
 
 
-            <mat-form-field appearance="outline" >
+
+              <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Categorie</mat-label>
-                <input matInput  placeholder="0xAAA.AAAAA" 
-                formControlName="categorieFormCtrl"  required>
-              </mat-form-field>    
+                
+                <input type="text" matInput [formControl]="myControl" 
+                formControlName="categorieFormCtrl" [matAutocomplete]="auto">
+
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>   
 
               <mat-form-field appearance="outline" >
                 <mat-label>Object</mat-label>
@@ -36,7 +44,24 @@
                 formControlName="descriptionFormCtrl" required></textarea>
               </mat-form-field>
 
+              <div class="profile-pic-flex" >
+                <div class="profile-pic-text"  >Upload Profile picture</div>
+                  <button type="button" class="profile-pic"
+                  (click)="filepicker.click()" >
+                  
+                  
+                  <div *ngIf="imagePreview != '' && imagePreview" class="imagePreview">
+                    <img [src]="imagePreview" alt="sdf">
+                  </div>
+                    <span class="material-icons"  >file_upload</span>
+                  </button>
+                  <input type="file"  
+                  formControlName="filePathFormCtrl"
+                  #filepicker
+                  (change)="onFilePicked($event)" 
+                  >
 
+            </div>
 
 
             <div>
@@ -50,13 +75,203 @@
 
         <mat-step  label="Fill out your address" formGroupName="1" [stepControl]="formArray?.get([1])!">
           <div class="mat-step-content" >
+            <div class="secend-step-content-flex" >
+                <div class="secend-step-content" >
+                  <label for="secend-step-content">Standar</label>
 
-            <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>Description</mat-label>
-              <textarea matInput name="description"  placeholder="Ex. It makes me feel..." 
-              formControlName="descriptionFormCtrl" required></textarea>
-            </mat-form-field>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Price</mat-label>
+                    <input matInput  type="number" placeholder="0.2 ** Eth" 
+                    formControlName="StandarPriceFormCtrl"  required>
+                  </mat-form-field>  
+                  
 
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Description</mat-label>
+                    <input matInput  placeholder="Basic ** logo concept" 
+                    formControlName="StandardescriptionFormCtrl"  required>
+                  </mat-form-field>   
+
+                  <div class="secend-step-content-time" >
+
+                    <mat-form-field appearance="outline" >
+                      <mat-label>Delevery Time</mat-label>
+                      <input matInput type="number" 
+                      placeholder="1 ** 23" 
+                      formControlName="StandarDeleveryTimeFormCtrl"                   
+                      min="1"
+                      max="23" 
+                      [(ngModel)]="value"
+                      required>
+                    </mat-form-field>
+                    
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>Time</mat-label>
+                      <mat-select 
+                      formControlName="StandarDeleveryTimedayFormCtrl"
+                      [(ngModel)]="valuetype">
+                        <mat-option value="Hour">Hour</mat-option>
+                        <mat-option value="Day">Day</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+
+
+                                      
+                  <mat-form-field appearance="outline">
+                    <mat-label>Revisions</mat-label>
+                    <mat-select 
+                    formControlName="StandarRevisionsFormCtrl"
+                    [(ngModel)]="Revisionsnumbre">
+                      <mat-option value="1">1</mat-option>
+                      <mat-option value="3">3</mat-option>
+                      <mat-option value="5">5</mat-option>
+                      <mat-option value="Infinity">Infinity</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Base Artwork</mat-label>
+                    <input matInput type="number" 
+                    placeholder="1 ** 23" 
+                    formControlName="StandarBaseArtworkTimeFormCtrl"                   
+                    min="1"
+                    [(ngModel)]="valuebase"
+                    required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Trait/Accessory</mat-label>
+                    <input matInput type="number" 
+                    placeholder="1 ** 23" 
+                    formControlName="StandarTraitAccessoryTimeFormCtrl"                   
+                    min="1"
+                    [(ngModel)]="valuetrait"
+                    required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Variation</mat-label>
+                    <input matInput type="number" 
+                    placeholder="1 ** 23" 
+                    formControlName="StandarVariationFormCtrl"                   
+                    min="1"
+                    [(ngModel)]="valuevariation"
+                    required>
+                  </mat-form-field>
+                  
+
+                  <div class="secend-step-content-checkbox" >
+                    <section class="example-section" >
+                      <p><mat-checkbox formControlName="StandarMetadata" >Metadata</mat-checkbox></p>
+                      <p><mat-checkbox formControlName="StandarGeneration">Collection Generation</mat-checkbox></p>
+                      <p><mat-checkbox formControlName="StandarBackground">Background/Scene</mat-checkbox></p>
+                    </section>
+                  </div>
+
+                </div>
+
+<!------------------------------------------------->
+
+                <div class="secend-step-content" >
+                  <label for="secend-step-content">Premium</label>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Price</mat-label>
+                    <input matInput  type="number" placeholder="0.2 ** Eth" 
+                    formControlName="PremiumPriceFormCtrl"  required>
+                  </mat-form-field>  
+                  
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Description</mat-label>
+                    <input matInput  placeholder="Basic ** logo concept" 
+                    formControlName="PremiumdescriptionFormCtrl"  required>
+                  </mat-form-field>   
+
+                  <div class="secend-step-content-time" >
+
+                    <mat-form-field appearance="outline" >
+                      <mat-label>Delevery Time</mat-label>
+                      <input matInput type="number" 
+                      placeholder="1 ** 23" 
+                      formControlName="PremiumDeleveryTimeFormCtrl"                   
+                      min="1"
+                      max="23" 
+                      [(ngModel)]="premvalue"
+                      required>
+                    </mat-form-field>
+                    
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>Time</mat-label>
+                      <mat-select 
+                      formControlName="PremiumDeleveryTimedayFormCtrl"
+                      [(ngModel)]="premvaluetype">
+                        <mat-option value="Hour">Hour</mat-option>
+                        <mat-option value="Day">Day</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                  </div>
+
+
+
+
+                                      
+                  <mat-form-field appearance="outline">
+                    <mat-label>Revisions</mat-label>
+                    <mat-select 
+                    formControlName="PremiumRevisionsFormCtrl"
+                    [(ngModel)]="premRevisionsnumbre">
+                      <mat-option value="1">1</mat-option>
+                      <mat-option value="3">3</mat-option>
+                      <mat-option value="5">5</mat-option>
+                      <mat-option value="Infinity">Infinity</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Base Artwork</mat-label>
+                    <input matInput type="number" 
+                    placeholder="1 ** 23" 
+                    formControlName="PremiumBaseArtworkTimeFormCtrl"                   
+                    min="1"
+                    [(ngModel)]="premvaluebase"
+                    required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Trait/Accessory</mat-label>
+                    <input matInput type="number" 
+                    placeholder="1 ** 23" 
+                    formControlName="PremiumTraitAccessoryTimeFormCtrl"                   
+                    min="1"
+                    [(ngModel)]="premvaluetrait"
+                    required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Variation</mat-label>
+                    <input matInput type="number" 
+                    placeholder="1 ** 23" 
+                    formControlName="PremiumVariationFormCtrl"                   
+                    min="1"
+                    [(ngModel)]="premvaluevariation"
+                    required>
+                  </mat-form-field>
+                  
+
+                  <div class="secend-step-content-checkbox" >
+                    <section class="example-section" >
+                      <p><mat-checkbox formControlName="PremiumMetadata" >Metadata</mat-checkbox></p>
+                      <p><mat-checkbox formControlName="PremiumGeneration">Collection Generation</mat-checkbox></p>
+                      <p><mat-checkbox formControlName="PremiumBackground">Background/Scene</mat-checkbox></p>
+                    </section>
+                  </div>
+                </div>
+          </div>
             <div>
               <button mat-button type="button" matStepperPrevious>Back</button>
               <button mat-button type="button" matStepperNext>Next</button>
