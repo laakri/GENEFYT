@@ -10,13 +10,12 @@ const gig = mongoose.Schema({
   gigCategorie:{ type: String, required: true },
   gigObject: { type: String, required: true },
   gigdescription: { type: String  , required: true},
-  gigImgPath:{type:String , required: true },
+  filePath:{type:String , required: true },
   
   StandarPrice:{ type: String  , required: true},
   Standardescription:{ type: String  , required: true},
   StandarDeleveryTime:{ type: String  , required: true},  
   StandarRevisions: { type: String, required: true },
-  
   StandarBaseArtwork:{ type: String  , required: true},
   StandarTraitAccessory:{ type: String  , required: true},
   StandarVariation: { type: String, required: true },
@@ -28,11 +27,9 @@ const gig = mongoose.Schema({
   Premiumdescription:{ type: String  , required: true},
   PremiumDeleveryTime:{ type: String  , required: true},  
   PremiumRevisions:{ type: String  , required: true},
-
   PremiumBaseArtwork:{ type: String  , required: true},
   PremiumTraitAccessory:{ type: String  , required: true},
   PremiumVariation: { type: String, required: true },
-  
   PremiumMetadata:{ type: String  , required: true},
   PremiumGeneration:{ type: String  , required: true},
   PremiumBackground:{ type: String  , required: true},

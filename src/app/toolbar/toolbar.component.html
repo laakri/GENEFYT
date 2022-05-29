@@ -1,23 +1,17 @@
-
-  <div class="toolbar-max" >
-  <div class="toolbar "  >
-    <img
-      alt="Angular Logo"
-      src="./../../assets/principal-logo.png"
-    />
+<div class="toolbar-max">
+  <div class="toolbar">
+    <img alt="Angular Logo" src="./../../assets/principal-logo.png" />
     <a href="Homepage"><span>Genefyt</span></a>
     <div class="spacer"></div>
     <div class="toolbar-right">
-      <a  href="PostPage" >Postpage</a>
+      <a href="PostPage">Postpage</a>
       <a href="ResultList">Result list</a>
       <a href="" routerLink="/information">information</a>
       <a href="" routerLink="/CreateGig">createGig</a>
-      <a href="Profile;id=62860160928dbb5b55b0a9b2">Profile</a>
+      <a [routerLink]="['/Profile', '6288b20207e6fdacf3761c20']">Profile</a>
       <a href="">Home</a>
       <a href="" routerLink="/Log/SignUp">Sign Up</a>
-      <button mat-raised-button (click)="login()" >Login</button>
+      <button mat-raised-button (click)="login()">Login</button>
     </div>
-
   </div>
-  </div>
-
+</div>

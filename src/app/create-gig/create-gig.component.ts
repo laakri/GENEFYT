@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { GigService } from "./gig.service" ;
 
 
 
@@ -19,7 +20,7 @@ export interface categ {
 
 export class CreateGigComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = true;
+  isLinear = false;
   filteredOptions!: Observable<categ[]>;
   myControl = new FormControl();
   value = 1;
@@ -36,13 +37,20 @@ export class CreateGigComponent implements OnInit {
   premRevisionsnumbre = "1";
   imagePreview!: string;
   imageName!:string;
+  private userId :any;
+  PremiumAlltime!: string;
+  StandarAlltime!: string;
+
+  trueFile!: File;
 
 
   stepperOrientation: Observable<StepperOrientation>;
   get formArray(): AbstractControl | null { return this.formGroup.get('formArray')  ; }
 
   constructor(private _formBuilder: FormBuilder,
-    breakpointObserver: BreakpointObserver)
+    breakpointObserver: BreakpointObserver,
+    private GigService : GigService,
+  )
   {
     this.stepperOrientation = breakpointObserver
     .observe('(min-width: 800px)')
@@ -60,12 +68,10 @@ export class CreateGigComponent implements OnInit {
    }
   
   
-  
-  
-  
   ngOnInit(): void {
 
-
+    this.userId = localStorage.getItem("userId");
+    
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => (typeof value === 'string' ? value : value.name)),
@@ -114,20 +120,25 @@ export class CreateGigComponent implements OnInit {
 
 
   addimfo(form : FormGroup ){
-    /*if (form.invalid){
+    if (form.invalid){
       return
     }
-*/
-    console.log(
+
+    this.PremiumAlltime = form.value.formArray[1].PremiumDeleveryTimeFormCtrl +" " +
+    form.value.formArray[1].PremiumDeleveryTimedayFormCtrl,
+    this.StandarAlltime = form.value.formArray[1].PremiumDeleveryTimeFormCtrl +" " +
+    form.value.formArray[1].PremiumDeleveryTimedayFormCtrl,
+
+    this.GigService.addGig(
+      this.userId,
       form.value.formArray[0].categorieFormCtrl.name,
       form.value.formArray[0].objectFormCtrl,
       form.value.formArray[0].descriptionFormCtrl,
-      form.value.formArray[0].filePathFormCtrl,
+      this.trueFile,
 
       form.value.formArray[1].StandarPriceFormCtrl,
       form.value.formArray[1].StandardescriptionFormCtrl,
-      form.value.formArray[1].StandarDeleveryTimeFormCtrl,
-      form.value.formArray[1].StandarDeleveryTimedayFormCtrl,
+      this.StandarAlltime,
       form.value.formArray[1].StandarRevisionsFormCtrl,
       form.value.formArray[1].StandarBaseArtworkTimeFormCtrl,
       form.value.formArray[1].StandarTraitAccessoryTimeFormCtrl,
@@ -138,8 +149,7 @@ export class CreateGigComponent implements OnInit {
 
       form.value.formArray[1].PremiumPriceFormCtrl,
       form.value.formArray[1].PremiumdescriptionFormCtrl,
-      form.value.formArray[1].PremiumDeleveryTimeFormCtrl,
-      form.value.formArray[1].PremiumDeleveryTimedayFormCtrl,
+      this.PremiumAlltime,
       form.value.formArray[1].PremiumRevisionsFormCtrl,
       form.value.formArray[1].PremiumBaseArtworkTimeFormCtrl,
       form.value.formArray[1].PremiumTraitAccessoryTimeFormCtrl,
@@ -147,14 +157,9 @@ export class CreateGigComponent implements OnInit {
       form.value.formArray[1].PremiumMetadata,
       form.value.formArray[1].PremiumGeneration,
       form.value.formArray[1].PremiumBackground,
-
     );
-  
+    
 }
-
-  
-  
-  
 
 onFilePicked(event: Event) {
   const file =((event.target as HTMLInputElement ).files as FileList)[0];
@@ -165,11 +170,10 @@ onFilePicked(event: Event) {
     this.imagePreview = (reader.result as string );
   };
   reader.readAsDataURL(file);
+  this.trueFile = file;
   this.imageName = file.name;
 }
 
-  
-  
 options: categ[]  = 
 [
   {name: 'Graphics & Design' },
@@ -181,5 +185,6 @@ options: categ[]  =
   {name: 'Business' },
   {name: 'Tranding' },
 
-];
+  ];
+  
 }

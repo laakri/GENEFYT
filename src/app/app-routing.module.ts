@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'Homepage', component: HomepageComponent },
   {path:'ResultList',component:ResultListComponent,},
-  {path:'Profile',component:ProfileComponent,},
-  {path:'PostPage',component:PostPageComponent,},
+  {path:'Profile/:userId',component:ProfileComponent,},
+  {path:'PostPage/:postId',component:PostPageComponent,},
   {path:'information',component:AddInformationComponent,},
   {path:'CreateGig',component:CreateGigComponent,},
 

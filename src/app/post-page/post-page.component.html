@@ -1,265 +1,257 @@
-<div class="mainpage" >
+<div class="mainpage">
+  <div class="content">
+    <div class="left-content">
+      <div class="left-content-text">
+        {{ gigData.gigObject }}
+      </div>
+      <a [routerLink]="['/Profile', gigData.userId]">
+        <div class="list-item-firt-line">
+          <img src="{{ users[0].imgPath }}" alt="" class="list-item-user-img" />
+          <div class="list-item-user-name">
+            {{ users[0].name }}
+          </div>
+        </div>
+      </a>
+      <mat-divider></mat-divider>
+      <div class="left-content-post-date">
+        Created in {{ gigData.createdAt }}
+      </div>
 
-    <div class="content" >
-        <div class="left-content" >
-            <div class="left-content-text" >
-                I will do minimalist modern and business logo design
-            </div>
-            <div class="list-item-firt-line" >
-                <img src="../../assets/avatar.png" alt="" class="list-item-user-img" >
-                <div class="list-item-user-name" >Jeremy Boudouza</div>
-                <div class="list-item-user-rate" >
-                    <mat-icon class="star">star</mat-icon>
-                    <span class="list-item-user-rate-number">4.5</span>
-                </div>
-            </div>
+      <div class="slick-carousel-content">
+        <img src="{{ gigData.file }}" alt="" />
+      </div>
 
-            <mat-divider></mat-divider>
-            <div class="left-content-post-date">Created in  25 Jan 2022</div>
-            <div class="slick-carousel-content">
-            
-            
-                    <ngx-slick-carousel class="carousel" 
-                    #slickModal="slick-carousel" 
-                    [config]="slideConfig" >
-            
-                    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-                    <img src="{{slide.img}}" alt="dfaz" width="100%;" height="100%;" >
-                    </div>
-                    </ngx-slick-carousel>
-            
-               
-            </div>  
-            <div class="left-content-about" >
-                <div class="left-content-about-tag">
-                    About This Gig
-                </div>
-                <div class="left-content-about-text" >
-                    Hi,
-                    Thank you for visiting my NFT Art Gig
-                    Are you looking to make a unique but High quality NFT Art collection? 
-                    Yes You are! That's 
-                    what You've been searching, and You have come to the right place
-                    NFT market is growing very fast and You must have very unique NFT Art 
-                    collection to Stay with the competition.
-                    So I've done my home works very well to provide my best 
-                    to customers and I have a developed coding to generate arts up to 100K
-                    
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="left-content-about-tag">
-                About The Seller
-            </div>
-            <!------------------------------------------------>
-            <mat-card class="head-profile" >
-
-                <div class="first-content">
-            
-                        <img src="../../assets/avatar.png" alt="avatar" class="avatar">
-                    <div  >
-                        <img src="../../assets/verified-dark.png" alt="verified" class="verified">
-                    </div>
-                </div>
-            
-            
-            
-                <div class="secend-content" >
-            
-            
-                    <div class="head-line-1" >
-                    <div class="User-name" >Jeremy Boudouza</div>
-                    <mat-icon class="User-location-icon" >location_on</mat-icon> <div class="User-location" > Tunisia </div>
-                    </div>
-            
-            
-                    <div class="head-line-2" >
-                        <div class="User-rate">
-                            <mat-icon class="star">star</mat-icon>
-                            <mat-icon class="star">star</mat-icon>
-                            <mat-icon class="star">star</mat-icon>
-                            <mat-icon class="star">star</mat-icon>
-                            <mat-icon class="star">star_border</mat-icon>
-                        </div>
-                    </div>
-            
-            
-                    <div class="head-line-3" >
-                        <div class="User-wallet"> 0xC5CA...62da3</div>
-                        <div class="Contact-me" >
-                            <button mat-flat-button color="primary" class="Contact-me-b">Contact Me</button>
-                        </div>
-                    </div>
-            
-            
-            
-                </div>
-            
-                  </mat-card>
-                <!------------------------------------------------>
-
-                <mat-card class="profile-details" >
-                    <div class="profile-details-2">
-                        <div class="profile-details-4" >
-                            <span>Member since</span>
-                            <span>Jan 2017</span>
-                        </div>
-                    <mat-divider></mat-divider>
-                    <div class="profile-details-4" >
-                        <span>From</span>
-                        <span>Tunisia</span>
-                    </div>
-
-                    </div>
-
-                </mat-card>
-
+      <div class="left-content-about">
+        <div class="left-content-about-tag">About This Gig</div>
+        <div class="left-content-about-text">
+          {{ gigData.gigdescription }}
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="left-content-about-tag">About The Seller</div>
+      <!------------------------------------------------>
+      <mat-card class="head-profile">
+        <div>
+          <img
+            src="../../assets/profile-header.png"
+            class="profile-header-img"
+            alt="dza"
+          />
         </div>
 
-        <div class="right-content" >
-            <div class="right-content-flex" >
-                
-                <a  (click)='Type("Standar")'class="right-content-left" >
-                <div >
-                    Standar
-                </div>
-                </a> 
-
-                <a  (click)='Type("Premium")'  class="right-content-right">
-                <div >
-                    Premium
-                </div>
-                </a> 
-
-            </div>
-            
-            <div class="right-content-content" *ngIf="isStandar">
-                
-                <div class="right-content-content-price" >
-                    
-                   <img src="../../assets/ethlogo2.png" alt="ethlogo">
-                   <span>0.2</span>
-                </div>
-                <div class="right-content-content-comment" >
-                    <span>
-                        Basic ** 1 Innovative logo concept 
-                        + Jpeg+3D mockup + Unlimited revisions
-
-                    
-                    </span>
-                </div>
-                    <div class="right-content-content-flex" >
-                        <div class="right-content-content-delivery-time" >
-                            <mat-icon>access_time</mat-icon>
-                            <span>3 Days Delivery</span>
-                        </div>
-                        <div class="right-content-content-Revision" >    
-                            <mat-icon>refresh</mat-icon>
-                            <span>2 Revisions</span>
-                        </div>
-                    </div>
-                <div class="right-content-content-abilitys" >
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>1 Base Artwork</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>1 Trait/Accessory</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>1 Variation</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>Metadata</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>Collection Generation</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>Background/Scene</span>
-                    </div>
-                    
-                </div>
-
-                <div class="Contact-me" >
-                    <button mat-flat-button color="primary" class="Contact-me-b">Contact Me</button>
-                </div>
-
-            </div>
-
-
-            <div class="right-content-content" *ngIf="!isStandar" >
-                
-                <div class="right-content-content-price" >
-                    
-                   <img src="../../assets/ethlogo2.png" alt="ethlogo">
-                   <span>0.3</span>
-                </div>
-                <div class="right-content-content-comment" >
-                    <span>
-                        Basic ** 1 Innovative logo concept 
-                        + Jpeg+3D mockup + Unlimited revisions
-
-                    
-                    </span>
-                </div>
-                    <div class="right-content-content-flex" >
-                        <div class="right-content-content-delivery-time" >
-                            <mat-icon>access_time</mat-icon>
-                            <span>3 Days Delivery</span>
-                        </div>
-                        <div class="right-content-content-Revision" >    
-                            <mat-icon>refresh</mat-icon>
-                            <span>2 Revisions</span>
-                        </div>
-                    </div>
-                <div class="right-content-content-abilitys" >
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>5 Base Artwork</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>40 Trait/Accessory</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>10000 Variation</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>Metadata</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>Collection Generation</span>
-                    </div>
-                    <div class="right-content-content-ability" >
-                        <mat-icon>check</mat-icon>
-                        <span>Background/Scene</span>
-                    </div>
-                </div>
-
-                <div class="Contact-me" >
-                    <button mat-flat-button color="primary" class="Contact-me-b">Contact Me</button>
-                </div>
-                
-            </div>
-            
+        <div>
+          <img src="{{ users[0].imgPath }}" alt="avatar" class="avatar" />
+          <div>
+            <img
+              src="../../assets/verified-dark.png"
+              [ngClass]="{ 'verified-none': users[0].verified == 'no' }"
+              alt="verified"
+              class="verified"
+            />
+          </div>
         </div>
 
-    </div>        
+        <div class="secend-content">
+          <div class="head-line-1">
+            <a [routerLink]="['/Profile', gigData.userId]">
+              <div class="User-name">{{ users[0].name }}</div></a
+            >
+          </div>
 
+          <div class="head-text">
+            {{ users[0].occupation }}
+          </div>
 
+          <div class="head-line-3">
+            <div class="Contact-me">
+              <button mat-raised-button color="primary" class="Contact-me-b">
+                Contact Me
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <!------------------------------------------------>
 
+      <mat-card class="profile-details">
+        <div class="profile-details-2">
+          <div class="profile-details-4">
+            <span>Member since</span>
+            <span>{{ users[0].createdAt }}</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="profile-details-4">
+            <span>From</span>
+            <span>{{ users[0].country }}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
 
+    <div class="right-content">
+      <div class="right-content-flex">
+        <a (click)="Type('Standar')" class="right-content-left">
+          <div>Standar</div>
+        </a>
 
+        <a (click)="Type('Premium')" class="right-content-right">
+          <div>Premium</div>
+        </a>
+      </div>
 
+      <div class="right-content-content" *ngIf="isStandar">
+        <div class="right-content-content-price">
+          <img src="../../assets/ethlogo2.png" alt="ethlogo" />
+          <span>{{ gigData.StandarPrice }}</span>
+        </div>
+        <div class="right-content-content-comment">
+          <span>
+            {{ gigData.Standardescription }}
+          </span>
+        </div>
+        <div class="right-content-content-flex">
+          <div class="right-content-content-delivery-time">
+            <mat-icon>access_time</mat-icon>
+            <span>{{ gigData.StandarDeleveryTime }} Delivery</span>
+          </div>
+          <div class="right-content-content-Revision">
+            <mat-icon>refresh</mat-icon>
+            <span>{{ gigData.StandarRevisions }} Revisions</span>
+          </div>
+        </div>
+        <div class="right-content-content-abilitys">
+          <div class="right-content-content-ability">
+            <mat-icon class="checked-situation"> check</mat-icon>
+            <span>{{ gigData.StandarBaseArtwork }} Base Artwork</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon class="checked-situation"> check</mat-icon>
+            <span>{{ gigData.StandarTraitAccessory }} Trait/Accessory</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon class="checked-situation"> check</mat-icon>
+            <span>{{ gigData.StandarVariation }} Variation</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon
+              class="checked-situation"
+              [ngClass]="{
+                'checked-situation-disabled': gigData.StandarMetadata == 'false'
+              }"
+            >
+              check</mat-icon
+            >
+            <span>Metadata</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon
+              class="checked-situation"
+              [ngClass]="{
+                'checked-situation-disabled':
+                  gigData.StandarGeneration == 'false'
+              }"
+            >
+              check</mat-icon
+            >
+            <span>Collection Generation</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon
+              class="checked-situation"
+              [ngClass]="{
+                'checked-situation-disabled':
+                  gigData.StandarBackground == 'false'
+              }"
+            >
+              check</mat-icon
+            >
+            <span>Background/Scene</span>
+          </div>
+        </div>
 
+        <div class="Contact-me">
+          <button mat-flat-button color="primary" class="Contact-me-b">
+            Contact Me
+          </button>
+        </div>
+      </div>
 
+      <div class="right-content-content" *ngIf="!isStandar">
+        <div class="right-content-content-price">
+          <img src="../../assets/ethlogo2.png" alt="ethlogo" />
+          <span>{{ gigData.PremiumPrice }}</span>
+        </div>
+        <div class="right-content-content-comment">
+          <span>
+            {{ gigData.Premiumdescription }}
+          </span>
+        </div>
+        <div class="right-content-content-flex">
+          <div class="right-content-content-delivery-time">
+            <mat-icon>access_time</mat-icon>
+            <span>{{ gigData.PremiumDeleveryTime }} Delivery</span>
+          </div>
+          <div class="right-content-content-Revision">
+            <mat-icon>refresh</mat-icon>
+            <span>{{ gigData.PremiumRevisions }} Revisions</span>
+          </div>
+        </div>
+        <div class="right-content-content-abilitys">
+          <div class="right-content-content-ability">
+            <mat-icon class="checked-situation"> check</mat-icon>
+            <span>{{ gigData.PremiumBaseArtwork }} Base Artwork</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon class="checked-situation"> check</mat-icon>
+            <span>{{ gigData.PremiumTraitAccessory }} Trait/Accessory</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon class="checked-situation"> check</mat-icon>
+            <span>{{ gigData.PremiumVariation }} Variation</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon
+              class="checked-situation"
+              [ngClass]="{
+                'checked-situation-disabled': gigData.PremiumMetadata == 'false'
+              }"
+            >
+              check</mat-icon
+            >
+            <span>Metadata</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon
+              class="checked-situation"
+              [ngClass]="{
+                'checked-situation-disabled':
+                  gigData.PremiumGeneration == 'false'
+              }"
+            >
+              check</mat-icon
+            >
+            <span>Collection Generation</span>
+          </div>
+          <div class="right-content-content-ability">
+            <mat-icon
+              class="checked-situation"
+              [ngClass]="{
+                'checked-situation-disabled':
+                  gigData.PremiumBackground == 'false'
+              }"
+            >
+              check</mat-icon
+            >
+            <span>Background/Scene</span>
+          </div>
+        </div>
+
+        <div class="Contact-me">
+          <button mat-flat-button color="primary" class="Contact-me-b">
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

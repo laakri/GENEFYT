@@ -1,199 +1,260 @@
-<div class="mainpage" *ngFor="let user of users" >
-    
-
-    <mat-card class="head-profile" >
-        <img src="../../assets/profile-header.png" alt="dza" class="profile-header-img" >
-    <div class="first-content">
-
-            <img src="../../assets/avatar.png" alt="avatar" class="avatar">
-        <div  >
-            <img src="../../assets/verified-dark.png" alt="verified" class="verified">
-        </div>
+<div class="mainpage">
+  <mat-card class="head-profile">
+    <!--
+    <div>
+      <img
+        src="../../assets/profile-header.png"
+        class="profile-header-img"
+        alt="dza"
+      />
+    </div>
+-->
+    <div>
+      <img src="{{ users[0].imgPath }}" alt="avatar" class="avatar" />
+      <div>
+        <img
+          src="../../assets/verified-dark.png"
+          [ngClass]="{ 'verified-none': users[0].verified == 'no' }"
+          alt="verified"
+          class="verified"
+        />
+      </div>
     </div>
 
-
-
-    <div class="secend-content" >
-
-
-        <div class="head-line-1" >
-        <div class="User-name"  >{{ user.name }}</div>
-
-        <div class="User-rate">
-            <mat-icon >star</mat-icon>
-            <span x>4.9</span>
-        </div>
-        </div>
-
-
-
-        <div class="head-text" >
-            {{user.occupation}}
-
-        </div>
-
-
-
-        <div class="head-line-3" >
-            <a  
-            class="User-wallet"
-            (click)="copyHeroName()"  
-            matTooltip="Copy"
-            matTooltipHideDelay="10">
-            
-            <div  > {{reswallet}}</div></a>
-            <div class="Contact-me" >
-                <button mat-raised-button color="primary" class="Contact-me-b">Contact Me</button>
-            </div>
-        </div>
-
-
-
-    </div>
-
-      </mat-card>
-
-
-      <div class="big-secend-content" >
-        <div class="left-secend-content" >
-            <mat-card class="first-left-secend-content" >
-                <div class="mat-list" >
-                    
-                    
-                    <div class="mat-list-item">
-                        <div class="head-text">From</div>
-                        <div class="under-head-text" *ngIf="user.country" >{{user.country}}</div>
-                    </div>
-                    <mat-divider></mat-divider>
-
-                    <div class="mat-list-item">
-                        <div class="head-text">Member since</div>
-                        <div class="under-head-text" >
-                            {{user.createdAt }}
-                        </div>
-                    </div>
-                    <mat-divider></mat-divider>
-                    <div class="mat-list-item" >
-                        <div class="head-text">Avg. response time</div>
-                        <div class="under-head-text"  *ngIf="user.responsTime">{{user.responsTime}}</div>
-                    </div>
-                    
-                </div>
-            </mat-card>
-
-            <mat-card class="secend-left-secend-content" >
-                <div class="mat-list" >
-                    
-                    
-                    <div class="mat-list-item">
-                        <div class="head-text">Description</div>
-                        <div class="under-head-text"  *ngIf="user.description">{{user.description}}</div>
-                    </div>
-                    <mat-divider></mat-divider>
-
-                    <div class="mat-list-item">
-                        <div class="head-text">Skills</div>
-                        <div class="under-head-text"  *ngIf="user.skills">
-                            <mat-chip-list aria-label="Fish selection">
-                            <mat-chip>{{user.skills}}</mat-chip>
-
-                          </mat-chip-list>
-                        </div>
-                    </div>
-
-                </div>
-            </mat-card>
-        </div>
-        <div class="right-secend-content">
-            <mat-card class="first-right-secend-content" >
-                <mat-card class="first-right-secend-content-empty" >
-                    <span>It seems that you don't have any active Gigs. Get selling!</span>
-                    <button mat-raised-button >Create New One</button>
-                </mat-card>
-
-
-
-
-
-
-
-
-                <div class="slick-carousel-content">
-            
-            
-                    <ngx-slick-carousel class="carousel" 
-                    #slickModal="slick-carousel" 
-                    [config]="slideConfig" >
-            
-
-                    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-
-                        <div>
-                            <mat-card class="list-item" >
-                                <div class="list-item-firt-line" >
-                                    <img src="{{slide.img}}" 
-                                        alt="" 
-                                        width="100%;"
-                                        height="100%;"
-                                        class="list-item-user-img" >
-
-                                    <div class="list-item-user-name" >Jeremy Boudouza</div>
-                                    <div class="list-item-user-rate" >
-                                        <mat-icon class="star">star</mat-icon>
-                                        <span>4.5</span>
-                                    </div>
-                                </div>
-                                <div class="list-item-firt-line-2" >
-                                    <p>
-                                        Need to get icons in your web project quickly Here’s 
-                                        the fastest and easiest way to use 
-                                    </p>
-                                </div>
-                                <div>
-                                    <div class="list-item-user-post-img-div" >
-                                        <img src="../../assets/NFT 2.png" alt="" class="list-item-user-post-img">
-                                    </div>  
-                                </div>
-                                <div class="list-item-firt-line-4" >
-                                    <img src="../../assets/ethlogo.png" alt="ethlogo">
-                                    <span>2.2 </span>
-                                </div>
-                
-                            </mat-card>
-
-                        </div>
-
-                    </div>
-                    </ngx-slick-carousel>
-            
-               
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </mat-card>
-        </div>
-
+    <div class="secend-content">
+      <div class="head-line-1">
+        <div class="User-name">{{ users[0].name }}</div>
       </div>
 
+      <div class="head-text">
+        {{ users[0].occupation }}
+      </div>
 
+      <div class="head-line-3">
+        <a
+          class="User-wallet"
+          (click)="copyHeroName()"
+          matTooltip="Copy"
+          matTooltipHideDelay="10"
+        >
+          <div>{{ reswallet }}</div></a
+        >
+        <div class="Contact-me">
+          <button mat-raised-button color="primary" class="Contact-me-b">
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <mat-divider></mat-divider>
 
+  <div class="big-secend-content">
+    <div class="left-secend-content">
+      <mat-card class="first-left-secend-content">
+        <div class="mat-list">
+          <div class="mat-list-item">
+            <div class="head-text">From</div>
+            <div class="under-head-text" *ngIf="users[0].country">
+              {{ users[0].country }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
 
+          <div class="mat-list-item">
+            <div class="head-text">Member since</div>
+            <div class="under-head-text">
+              {{ users[0].createdAt }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="mat-list-item">
+            <div class="head-text">Avg. response time</div>
+            <div class="under-head-text" *ngIf="users[0].responsTime">
+              {{ users[0].responsTime }}
+            </div>
+          </div>
+        </div>
+      </mat-card>
 
+      <mat-card class="secend-left-secend-content">
+        <div class="mat-list">
+          <div class="mat-list-item">
+            <div class="head-text">Description</div>
+            <div class="under-head-text" *ngIf="users[0].description">
+              {{ users[0].description }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
 
+          <div class="mat-list-item">
+            <div class="head-text">Skills</div>
+            <div
+              class="under-head-text mat-list-item-mat-chip-list"
+              *ngIf="users[0].skills"
+            >
+              <mat-chip-list
+                aria-label="Fish selection"
+                *ngFor="let skill of skills"
+              >
+                <mat-chip>{{ skill }}</mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="right-secend-content">
+      <mat-card class="first-right-secend-content">
+        <mat-card
+          class="first-right-secend-content-empty-all first-right-secend-content-empty"
+          [ngClass]="{
+            'first-right-secend-content-not-empty': users[0].verified == 'yes'
+          }"
+          *ngIf="CanGig == true"
+        >
+          <span>It seems that you don't have any active Gigs. </span>
+          <button mat-raised-button routerLink="/information">
+            Get Started!
+          </button>
+        </mat-card>
+
+        <mat-card
+          class="first-right-secend-content-empty-all first-right-secend-content-empty"
+          [ngClass]="{
+            'first-right-secend-content-not-empty': users[0].verified == 'no'
+          }"
+          *ngIf="CanGig == true"
+        >
+          <span>Create new Gig!</span>
+          <button mat-raised-button routerLink="/CreateGig">
+            Create New One
+          </button>
+        </mat-card>
+
+        <div class="slick-carousel-content">
+          <ngx-slick-carousel
+            class="carousel"
+            #slickModal="slick-carousel"
+            [config]="slideConfig"
+          >
+            <div ngxSlickItem *ngFor="let gig of gigs" class="slide">
+              <div>
+                <mat-card class="list-item">
+                  <div class="list-item-firt-line">
+                    <img
+                      src="{{ users[0].imgPath }}"
+                      alt=""
+                      width="100%;"
+                      height="100%;"
+                      class="list-item-user-img"
+                    />
+
+                    <div class="list-item-user-name">{{ users[0].name }}</div>
+                    <div class="list-item-user-rate">
+                      <mat-icon class="star">favorite</mat-icon>
+                      <span>4.5</span>
+                    </div>
+                  </div>
+                  <div class="list-item-firt-line-1">
+                    <p>
+                      {{ gig.gigCategorie }}
+                    </p>
+                  </div>
+                  <div class="list-item-firt-line-2">
+                    <p>
+                      {{ gig.gigObject }}
+                    </p>
+                  </div>
+                  <div>
+                    <div class="list-item-user-post-img-div">
+                      <img
+                        src="{{ gig.file }}"
+                        alt=""
+                        class="list-item-user-post-img"
+                        [routerLink]="['/PostPage', gig.id]"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="list-item-firt-line-4">
+                      <img src="../../assets/ethlogo.png" alt="ethlogo" />
+                      <span>{{ gig.StandarPrice }} </span>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+
+        <mat-card
+          class="first-right-secend-content-empty-all"
+          [ngClass]="{
+            'first-right-secend-content-not-empty': users[0].verified == 'no'
+          }"
+          *ngIf="CanComment == true"
+        >
+          <div class="first-right-secend-content-empty">
+            <span>Add Comment to {{ users[0].name }}</span>
+            <button mat-raised-button (click)="addComment()">
+              <i class="material-icons">insert_comment</i>
+              Comment
+            </button>
+          </div>
+          <div
+            class="first-right-secend-content-empty-down"
+            *ngIf="commentVisibility != false"
+          >
+            <form
+              (submit)="addimfo(firstFormGroup)"
+              [formGroup]="firstFormGroup"
+            >
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Comment</mat-label>
+                <textarea
+                  matInput
+                  name="description"
+                  placeholder="..."
+                  formControlName="CommentFormCtrl"
+                  required
+                ></textarea>
+              </mat-form-field>
+              <button mat-raised-button type="submit">Send</button>
+            </form>
+          </div>
+        </mat-card>
+        <div *ngFor="let comment of comments">
+          <div class="comments-section">
+            <mat-card class="comment-section">
+              <div class="comment-section-line-1">
+                <img
+                  src="../../assets/deafault-profile-pic.png"
+                  alt="{{ users[0].name }}"
+                />
+
+                <div>
+                  <div class="comment-section-user-name">Anonyme</div>
+                </div>
+              </div>
+              <div class="comment-section-line-2">
+                created at {{ comment.createdAt }}
+              </div>
+              <div class="c">
+                {{ comment.comment }}
+              </div>
+              <div
+                class="comment-section-line-4"
+                *ngIf="clientId == comment.clientId"
+              >
+                <button mat-button color="warn" (click)="ondelete(comment.id)">
+                  Delete
+                </button>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </div>

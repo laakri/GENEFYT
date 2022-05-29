@@ -231,8 +231,9 @@ mat-chip{
 }
 
 .two-content-flex{
-  min-height: 450px;
-  width: 100%;
+  margin: auto;
+  min-height: 430px;
+  width: 90%;
   display: flex;
   justify-content: space-around;
 }
@@ -240,8 +241,7 @@ mat-chip{
 .two-content-left{
   box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
   rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
-  width: 600px;
-  min-height: 100%;
+  width: 500px;
   border-radius: 20px;
   background-image: url(../../assets/nfthome2.png);
   background-repeat: no-repeat;
@@ -249,9 +249,18 @@ mat-chip{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-
+  position: relative;
 }
-
+.two-content-left-absolute{
+  color: var(--whitecolor);
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 90%;
+}
+.two-content-left-absolute span{
+  font-size: 30px;
+}
 .two-content-right{
   height: 100%;
   width: 50%;
@@ -260,17 +269,24 @@ mat-chip{
 .two-content-right-item{
   box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
   rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
-  width: 100%;
-  min-height: 95px;
+  width: 90%;
+  min-height: 90px;
   border-radius: 20px;
-  background-color: var(--soft-darkcolor);
   color: var(--whitecolor);
   padding: 20px;
 }
 .item2{
-  margin: 20px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.two-content-right-item span{
+  font-size: 21px;
 }
 
+.two-content-right-item h3{
+  font-size: 17px;
+  margin: 10px auto 0 auto ;
+}
 /********************************************************************************/
 
 .three-content {
