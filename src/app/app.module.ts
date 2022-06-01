@@ -16,43 +16,44 @@ import { SuccesComponent } from './succes/succes.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddInformationComponent } from './add-information/add-information.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { CreateGigComponent } from './create-gig/create-gig.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { AuthInterceptor } from './login/login.interceptor';
-
-
+import { CodeInformationComponent } from './code-information/code-information.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserslistComponent } from './admin/userslist/userslist.component';
 
 /* *******************MODELS******************** */
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule,} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {A11yModule} from '@angular/cdk/a11y';
-import {MatSortModule} from '@angular/material/sort';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatListModule} from '@angular/material/list';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatChipsModule} from '@angular/material/chips';
-import {SlickCarouselModule } from 'ngx-slick-carousel';
-import {ClipboardModule} from '@angular/cdk/clipboard';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { A11yModule } from '@angular/cdk/a11y';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 /* ********************************************* */
 @NgModule({
@@ -70,7 +71,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ErrorComponent,
     SuccesComponent,
     AddInformationComponent,
-    CreateGigComponent
+    CreateGigComponent,
+    CodeInformationComponent,
+    AdminComponent,
+    UserslistComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,15 +109,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTooltipModule,
     MatStepperModule,
     MatSelectModule,
-    RouterModule.forRoot([ ]),
+    RouterModule.forRoot([]),
     MatSliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents:[ErrorComponent]
+  entryComponents: [ErrorComponent],
 })
-export class AppModule { }
+export class AppModule {}

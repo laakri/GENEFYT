@@ -1,0 +1,23 @@
+.mainpage {
+  max-width: 1200px;
+  min-height: 680px;
+  margin: 50px auto;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+mat-form-field input {
+  color: var(--whitecolor);
+}
+.usernumber {
+  display: flex;
+}
+h3 {
+  color: white;
+  margin: 20px 10px;
+}

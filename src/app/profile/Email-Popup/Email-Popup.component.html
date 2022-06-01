@@ -1,0 +1,17 @@
+<div class="popup-all">
+  <div class="popup-1">Click to copy</div>
+  <div>
+    <span class="popup-span">Email :</span>
+    <a
+      class="popup-2"
+      matTooltip="Copy"
+      matTooltipHideDelay="10"
+      (click)="copyHeroName()"
+    >
+      {{ data.email }}</a
+    >
+  </div>
+</div>
+<div class="popup-button">
+  <button mat-raised-button (click)="onNoClick()">Ok</button>
+</div>

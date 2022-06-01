@@ -167,5 +167,17 @@ router.get("/GetAllGigs", (req, res, next) => {
       });
     });
 });
-
+/***************-Delete-*******************/
+router.delete("/delete/:id", (req, res, next) => {
+  Gig.deleteOne({ _id: req.params.id })
+    .then((result) => {
+      res.status(200).json({ message: "Comment deleted !" });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json({
+        message: "Problem In deleting Results !",
+      });
+    });
+});
 module.exports = router;

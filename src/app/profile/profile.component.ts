@@ -10,7 +10,12 @@ import { ProfileService } from './profile.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../login/user.service';
 import { Com } from './comment.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogOverviewExampleDialog } from './Email-Popup/Email-Popup.component';
 
+export interface DialogData {
+  email: string;
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -35,9 +40,11 @@ export class ProfileComponent implements OnInit {
   commentVisibility = false;
   firstFormGroup!: FormGroup;
   clientId!: any;
+  clientRole!: any;
 
   CanComment = true;
   CanGig = true;
+  AdminDelete = false;
   constructor(
     private clipboard: Clipboard,
     public route: ActivatedRoute,
@@ -45,12 +52,14 @@ export class ProfileComponent implements OnInit {
     private GigService: GigService,
     private _formBuilder: FormBuilder,
     private commentService: commentService,
-    private UsersService: UsersService
+    private UsersService: UsersService,
+    public dialog: MatDialog
   ) {
     setInterval(() => {
       this.date = new Date();
     }, 1000);
   }
+  /******************************************************/
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe((params) => {
@@ -58,18 +67,22 @@ export class ProfileComponent implements OnInit {
     });
 
     this.clientId = localStorage.getItem('userId');
-
-    if (this.clientId == this.UserID) {
-      this.CanComment = false;
+    this.clientRole = localStorage.getItem('userRole');
+    if (this.clientRole == 'admin') {
+      this.AdminDelete = true;
       this.CanGig = true;
-    } else if (this.clientId == null) {
-      this.CanComment = false;
-      this.CanGig = false;
-    } else if (this.clientId !== this.UserID) {
-      this.CanComment = true;
-      this.CanGig = false;
+    } else {
+      if (this.clientId == this.UserID) {
+        this.CanComment = false;
+        this.CanGig = true;
+      } else if (this.clientId == null) {
+        this.CanComment = false;
+        this.CanGig = false;
+      } else if (this.clientId !== this.UserID) {
+        this.CanComment = true;
+        this.CanGig = false;
+      }
     }
-
     this.ProfileService.getusers(this.UserID);
 
     this.userSub = this.ProfileService.getUserUpdateListener().subscribe(
@@ -86,7 +99,7 @@ export class ProfileComponent implements OnInit {
     this.GigService.getResults(this.UserID);
     this.gigSub = this.GigService.getGigUpdateListener().subscribe(
       (results: Gig[]) => {
-        this.gigs = results;
+        this.gigs = results.reverse();
       }
     );
 
@@ -101,13 +114,29 @@ export class ProfileComponent implements OnInit {
       CommentFormCtrl: ['', Validators.required],
     });
   }
+  /******************************************************/
+
   copyHeroName() {
     this.clipboard.copy(this.users[0].Wallet);
   }
+  /******************************************************/
+  openDialogEmail(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '300px',
+      height: '150px',
+      data: { email: this.users[0].email },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
+  /******************************************************/
 
   addComment() {
     this.commentVisibility = !this.commentVisibility;
   }
+
+  /******************************************************/
+
   addimfo(form: FormGroup) {
     if (form.invalid) {
       console.log('form invalid !');
@@ -129,6 +158,22 @@ export class ProfileComponent implements OnInit {
       return;
     }
   }
+
+  /******************************************************/
+
+  onDeleteGig(id: any) {
+    this.GigService.deletGig(id);
+
+    this.GigService.getResults(this.UserID);
+    this.gigSub = this.GigService.getGigUpdateListener().subscribe(
+      (results: Gig[]) => {
+        this.gigs = results;
+      }
+    );
+  }
+
+  /******************************************************/
+
   ondelete(id: any) {
     this.commentService.deletComment(id);
 

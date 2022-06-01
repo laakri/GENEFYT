@@ -1,0 +1,77 @@
+<div class="mainpage">
+  <div class="h1-text">Explore the Genefyt Code</div>
+  <div class="h3-text">
+    Swap, earn, vote, and more with hundreds of DeFi apps, integrations, and
+    tools built on the Uniswap Protocol.
+  </div>
+  <mat-divider></mat-divider>
+  <div class="h2-text">Brand assets</div>
+  <div class="h3-text">Download the logo and other brand assets here.</div>
+
+  <div class="assets-lists">
+    <div class="assets-list">
+      <div class="assets-list-top">
+        <img src="../../assets/NFT.png" alt="NFT" />
+      </div>
+      <div class="assets-list-bottom">
+        <div class="assets-list-text-1">Uniswap Lockup</div>
+        <div class="assets-list-text-2">
+          Commonly used where the full Uniswap branding needs to be displayed.
+        </div>
+      </div>
+    </div>
+
+    <div class="assets-list">
+      <div class="assets-list-top">
+        <img src="../../assets/NFT 3.png" alt="NFT" />
+      </div>
+      <div class="assets-list-bottom">
+        <div class="assets-list-text-1">Uniswap Lockup</div>
+        <div class="assets-list-text-2">
+          Commonly used where the full Uniswap branding needs to be displayed.
+        </div>
+      </div>
+    </div>
+    <div class="assets-list">
+      <div class="assets-list-top">
+        <img src="../../assets/coinG-pic1.png" alt="NFT" />
+      </div>
+      <div class="assets-list-bottom">
+        <div class="assets-list-text-1">Uniswap Lockup</div>
+        <div class="assets-list-text-2">
+          Commonly used where the full Uniswap branding needs to be displayed.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div class="h2-text">Brand assets</div>
+  <div class="h3-text">Download the logo and other brand assets here.</div>
+
+  <mat-form-field class="search-bar" appearance="outline">
+    <mat-label> ❉/ Search</mat-label>
+
+    <input
+      type="text"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
+  </mat-form-field>
+
+  <div class="list-items">
+    <div class="list-item" *ngFor="let option of filteredOptions | async">
+      <div class="list-item-type">{{ option.type }}</div>
+      <div class="list-item-logo">
+        <img class="list-item-logo" src="{{ option.imgPath }}" alt="logo" />
+      </div>
+      <div class="list-item-name">{{ option.name }}</div>
+      <div class="list-item-discription">
+        {{ option.discription }}
+      </div>
+    </div>
+  </div>
+</div>

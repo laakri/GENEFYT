@@ -55,7 +55,7 @@ router.post("/login", (req, res, next) => {
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
         "secret_this_should_be_longer",
-        { expiresIn: "1h" }
+        { expiresIn: "5sec" }
       );
       res.status(200).json({
         token: token,
@@ -72,11 +72,42 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-/*************-Get Users-********** */
+/*************-Get User-********** */
 
 router.get("/data/:id", (req, res, next) => {
   User.find({ _id: req.params.id })
     .select(["-password", "-__v"])
+    .then((documents) => {
+      res.status(200).json({
+        message: "Profile runs seccesfully !",
+        users: documents,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+        message: "Profile Failed !",
+      });
+    });
+});
+/*************-Get Users-********** */
+
+router.get("/data", (req, res, next) => {
+  User.find()
+    .select([
+      "-password",
+      "-skills",
+      "-description",
+      "-responsTime",
+      "-occupation",
+      "-verified",
+      "-imgPath",
+      "-country",
+      "-roles",
+      "-Wallet",
+      "-__v",
+    ])
     .then((documents) => {
       res.status(200).json({
         message: "Profile runs seccesfully !",
@@ -150,4 +181,17 @@ router.patch(
   }
 );
 
+/***************-Delete-*******************/
+router.delete("/delete/:id", (req, res, next) => {
+  User.deleteOne({ _id: req.params.id })
+    .then((result) => {
+      res.status(200).json({ message: "User deleted !" });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json({
+        message: "Problem In deleting User !",
+      });
+    });
+});
 module.exports = router;

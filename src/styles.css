@@ -151,3 +151,14 @@ mat-divider {
 .mat-checkbox-frame {
   background-color: #ffffff !important;
 }
+/*******************************************************/
+.mat-elevation-z8 {
+  color: #088f1f !important;
+  background-color: var(--soft-darktranscolor) !important;
+}
+.mat-elevation-z8 th {
+  color: var(--graycolor) !important ;
+}
+.mat-elevation-z8 td {
+  color: var(--whitecolor) !important ;
+}

@@ -39,8 +39,13 @@
         >
           <div>{{ reswallet }}</div></a
         >
-        <div class="Contact-me">
-          <button mat-raised-button color="primary" class="Contact-me-b">
+        <div class="Contact-me" *ngIf="CanGig == false">
+          <button
+            mat-raised-button
+            color="primary"
+            class="Contact-me-b"
+            (click)="openDialogEmail()"
+          >
             Contact Me
           </button>
         </div>
@@ -150,10 +155,17 @@
                       class="list-item-user-img"
                     />
 
-                    <div class="list-item-user-name">{{ users[0].name }}</div>
+                    <div class="list-item-user-name">
+                      {{ users[0].name }}
+                    </div>
                     <div class="list-item-user-rate">
                       <mat-icon class="star">favorite</mat-icon>
                       <span>4.5</span>
+                    </div>
+                    <div class="list-item-user-delete" *ngIf="CanGig == true">
+                      <a (click)="onDeleteGig(gig.id)">
+                        <span class="material-icons">delete_outline</span>
+                      </a>
                     </div>
                   </div>
                   <div class="list-item-firt-line-1">
@@ -245,7 +257,7 @@
               </div>
               <div
                 class="comment-section-line-4"
-                *ngIf="clientId == comment.clientId"
+                *ngIf="clientId == comment.clientId || AdminDelete"
               >
                 <button mat-button color="warn" (click)="ondelete(comment.id)">
                   Delete

@@ -1,22 +1,19 @@
-
 .toolbar-max {
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 85px;
   position: -webkit-sticky;
   position: sticky;
   background-color: var(--darktranscolor);
-z-index: 10;
+  z-index: 10;
 }
 .spacer {
   flex: 1;
 }
 
 .toolbar {
-  max-width: 1700px;
   margin: auto;
   top: 0;
   left: 0;
@@ -26,38 +23,77 @@ z-index: 10;
   align-items: center;
   background-color: var(--darktranscolor);
   color: var(--whitecolor);
-
-
 }
 
-
-
-
+.toolbar-admin {
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  background: rgb(27, 26, 30);
+  background: linear-gradient(
+    98deg,
+    rgba(27, 26, 30, 1) 0%,
+    rgba(161, 80, 119, 1) 34%,
+    rgba(23, 185, 153, 1) 70%,
+    rgba(27, 26, 30, 1) 100%
+  );
+  color: var(--whitecolor);
+}
+.toolbar-center {
+  margin: auto;
+  font-size: 16px;
+  position: relative;
+}
+.toolbar-center a {
+  margin: auto 16px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.toolbar-center span {
+  position: absolute;
+  font-size: 22px;
+  top: -2px;
+  right: -13px;
+}
 .toolbar span {
   font-size: 25px;
   color: var(--whitecolor);
 }
-.toolbar img {
+.pricipal-logo {
   margin-left: 50px;
   width: 30px;
   height: 30px;
 }
-.toolbar a {
+.toolbar-a {
   font-size: 17px;
   margin: auto 16px;
   color: var(--graycolor);
 }
-.toolbar a:hover{
+.toolbar-a:hover {
   color: var(--whitecolor);
 }
 .toolbar-right {
   margin-right: 30px;
   margin-left: 10px;
 }
-.toolbar button{
+.toolbar button {
   background-color: var(--maincolor);
   font-size: 17px;
 }
-.toolbar button:hover{
+.toolbar button:hover {
   filter: grayscale(0.7);
+}
+.avatar-icon img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.avatar-icon img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }

@@ -1,95 +1,71 @@
-import { Component } from '@angular/core';
-import { MatDialog,MatDialogRef  } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UsersService } from '../login/user.service';
 
-import {LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../login/login.component';
+import { Subscription } from 'rxjs';
+import { User } from '../login/user.model';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  styleUrls: ['./toolbar.component.css'],
 })
+export class ToolbarComponent implements OnInit {
+  userIsAuthenticated = false;
+  adminIsAuthenticated = false;
+  userIdLocal: any;
+  private authListenerSubs!: Subscription;
+  private authAdminListenerSubs!: Subscription;
 
+  userSub!: Subscription;
+  users!: User[];
 
-export class ToolbarComponent  {
+  constructor(public dialog: MatDialog, public UsersService: UsersService) {}
 
+  ngOnInit(): void {
+    this.userIdLocal = localStorage.getItem('userId');
 
-  constructor(public dialog: MatDialog) {
+    this.userIsAuthenticated = this.UsersService.getIsAuth();
+    this.authListenerSubs = this.UsersService.getAuthStatusListener().subscribe(
+      (isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+      }
+    );
 
-   }
- 
-   login(): void {
+    this.adminIsAuthenticated = this.UsersService.getAdminIsAuth();
+    this.authAdminListenerSubs =
+      this.UsersService.getAuthAdminStatusListener().subscribe(
+        (isAuthenticated) => {
+          this.adminIsAuthenticated = isAuthenticated;
+        }
+      );
+
+    if (this.userIdLocal != null) {
+      this.userIsAuthenticated = this.UsersService.getIsAuth();
+
+      this.UsersService.getuserimgPath(this.userIdLocal);
+
+      this.userSub = this.UsersService.getUserimgPathListener().subscribe(
+        (users: User[]) => {
+          this.users = users;
+        }
+      );
+    }
+  }
+
+  login(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '530px',
-      minHeight:'550px',
-      backdropClass: 'backdropBackground'
+      minHeight: '550px',
+      backdropClass: 'backdropBackground',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
   }
-
-
+  onLogout() {
+    this.UsersService.logout();
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-export class ToolbarComponent implements OnInit {
-  
-  routeQueryParams: Subscription;
-
-  constructor(public dialog: MatDialog , private route: ActivatedRoute) { 
-    
-    this.routeQueryParams = route.queryParams.subscribe(params => {
-      if (params['dialog']) {
-        this.Login();
-      }
-    });
-  }
-  
-
-  ngOnInit(): void {}
-  
-  
-  ngOnDestroy() {
-    this.routeQueryParams.unsubscribe();
-  }
-
-
-  Login(): void {
-    const dialogRef = this.dialog.open(LoginComponent, {
-      width: '530px',
-      minHeight:'600px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
-  }
-
-
-
-  
-
-}
-
-*/

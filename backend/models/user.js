@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema(
     imgPath: { type: String, default: "../../assets/deafault-profile-pic.png" },
     verified: { type: String, default: "no" },
     occupation: { type: String, default: "None" },
-    rate: { type: String, default: "None" },
     responsTime: { type: String, default: "None" },
     skills: { type: String, default: "None" },
     description: { type: String, default: "None" },

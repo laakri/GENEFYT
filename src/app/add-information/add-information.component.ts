@@ -135,19 +135,22 @@ export class AddInformationComponent implements OnInit {
     'Graphic design',
     'Motion design',
     'Illustration',
+    'Photoshop',
     'NFT art',
-    'Sausage',
-    'Tomato',
+    '3D Art',
+    '2D Art',
+    'Painting',
+    'Coding',
+    'Trading',
   ];
 
   options: User[] = [
     { name: 'Graphics & Design' },
     { name: 'Digital Marketing' },
-    { name: 'Writing & Translation' },
     { name: 'Video & Animation' },
     { name: 'Music & Audio' },
-    { name: 'Programming & Tech' },
+    { name: 'Programming ' },
     { name: 'Business' },
-    { name: 'Tranding' },
+    { name: 'Network Contract' },
   ];
 }

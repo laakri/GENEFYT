@@ -186,4 +186,17 @@ export class GigService {
       'http://localhost:4401/api/Gigs/GetGig/' + gigId
     );
   }
+  deletGig(gigId: string) {
+    return this.http
+      .delete('http://localhost:4401/api/Gigs/delete/' + gigId)
+      .subscribe((responseData) => {
+        console.log('Gig Deleted successfully');
+        const successMessage = 'Gig Deleted Successfuly !';
+        this._snackBar.openFromComponent(SuccesComponent, {
+          data: { message: successMessage },
+          duration: 2500,
+          panelClass: ['green-snackbar'],
+        });
+      });
+  }
 }

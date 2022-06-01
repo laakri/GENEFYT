@@ -1,17 +1,55 @@
 <div class="toolbar-max">
+  <div class="toolbar-admin" *ngIf="adminIsAuthenticated">
+    <div class="toolbar-center">
+      <span class="material-icons">admin_panel_settings</span
+      ><a href=""> ADMIN</a>
+    </div>
+  </div>
+
   <div class="toolbar">
-    <img alt="Angular Logo" src="./../../assets/principal-logo.png" />
-    <a href="Homepage"><span>Genefyt</span></a>
+    <img
+      class="pricipal-logo"
+      alt="Angular Logo"
+      src="./../../assets/principal-logo.png"
+    />
+
+    <a class="toolbar-a" href="Homepage"><span>Genefyt</span></a>
     <div class="spacer"></div>
     <div class="toolbar-right">
-      <a href="PostPage">Postpage</a>
-      <a href="ResultList">Result list</a>
-      <a href="" routerLink="/information">information</a>
-      <a href="" routerLink="/CreateGig">createGig</a>
-      <a [routerLink]="['/Profile', '6288b20207e6fdacf3761c20']">Profile</a>
-      <a href="">Home</a>
-      <a href="" routerLink="/Log/SignUp">Sign Up</a>
-      <button mat-raised-button (click)="login()">Login</button>
+      <a class="toolbar-a" href="Userslist" *ngIf="adminIsAuthenticated">
+        <button mat-raised-button>Users List</button>
+      </a>
+
+      <a class="toolbar-a" href="codeInfo">codeInfo</a>
+      <a class="toolbar-a" href="ResultList">Shop-Shop</a>
+      <button mat-raised-button (click)="login()" *ngIf="!userIsAuthenticated">
+        Login
+      </button>
+
+      <a
+        class="toolbar-a"
+        href=""
+        routerLink="/CreateGig"
+        *ngIf="userIsAuthenticated"
+        >Create New Gig</a
+      >
+      <a
+        class="avatar-icon"
+        mat-button
+        [matMenuTriggerFor]="beforeMenu"
+        *ngIf="userIsAuthenticated"
+      >
+        <img src="{{ users[0].imgPath }}" alt="fzafza" />
+      </a>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item [routerLink]="['/Profile', userIdLocal]">
+          Profile
+        </button>
+        <button mat-menu-item href="" routerLink="/information">
+          Edit Information
+        </button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </mat-menu>
     </div>
   </div>
 </div>

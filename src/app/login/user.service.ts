@@ -6,10 +6,12 @@ import { Injectable } from '@angular/core';
 import { UserToUpdate } from './userToUpdate.model';
 import { SuccesComponent } from 'src/app/succes/succes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private isAuthenticated = false;
+  private isAdminAuthenticated = false;
   private userId: any;
   private userName: any;
   private userRole: any;
@@ -17,6 +19,7 @@ export class UsersService {
   private tokenTimer: any;
   private users: User[] = [];
   private authStatusListener = new Subject<boolean>();
+  private authAdminStatusListener = new Subject<boolean>();
   private userUpdated = new Subject<User[]>();
 
   constructor(
@@ -72,8 +75,14 @@ export class UsersService {
   getIsAuth() {
     return this.isAuthenticated;
   }
+  getAdminIsAuth() {
+    return this.isAdminAuthenticated;
+  }
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+  getAuthAdminStatusListener() {
+    return this.authAdminStatusListener.asObservable();
   }
 
   login(email: string, password: string) {
@@ -113,6 +122,10 @@ export class UsersService {
             this.userId = response.userId;
             this.userName = response.userName;
             this.userRole = response.userRole;
+            if (this.userRole == 'admin') {
+              this.isAdminAuthenticated = true;
+              this.authAdminStatusListener.next(true);
+            }
             this.authStatusListener.next(true);
             const now = new Date();
             const expirationDate = new Date(
@@ -132,6 +145,7 @@ export class UsersService {
         },
         (error) => {
           this.authStatusListener.next(false);
+          this.authAdminStatusListener.next(false);
         }
       );
   }
@@ -152,12 +166,18 @@ export class UsersService {
 
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
+      if (this.userRole == 'admin') {
+        this.isAdminAuthenticated = true;
+        this.authAdminStatusListener.next(true);
+      }
     }
   }
   logout() {
     this.token = null;
     this.isAuthenticated = false;
+    this.isAdminAuthenticated = false;
     this.authStatusListener.next(false);
+    this.authAdminStatusListener.next(false);
     this.userId = null;
     this.userName = null;
     this.userRole = null;
@@ -255,5 +275,30 @@ export class UsersService {
           console.log(error);
         }
       );
+  }
+
+  /*************************************************/
+
+  getuserimgPath(UserId: string) {
+    this.http
+      .get<{ message: string; users: any }>(
+        'http://localhost:4401/api/users/data/' + UserId
+      )
+      .pipe(
+        map((usertData) => {
+          return usertData.users.map((user: { imgPath: any }) => {
+            return {
+              imgPath: user.imgPath,
+            };
+          });
+        })
+      )
+      .subscribe((transformedUser) => {
+        this.users = transformedUser;
+        this.userUpdated.next([...this.users]);
+      });
+  }
+  getUserimgPathListener() {
+    return this.userUpdated.asObservable();
   }
 }

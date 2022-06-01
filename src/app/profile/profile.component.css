@@ -281,6 +281,12 @@
   right: -2px;
   font-size: 15px;
 }
+.list-item-user-delete {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  color: red;
+}
 .list-item-firt-line-1 {
   height: 20px;
   width: 90%;
