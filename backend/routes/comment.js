@@ -1,10 +1,11 @@
 const express = require("express");
 const Comment = require("../models/comment");
 const router = express.Router();
+const checkauth = require("../middleware/check-user");
 
 /******************-Add Comment-**********/
 
-router.post("/AddComment", (req, res, next) => {
+router.post("/AddComment", checkauth, (req, res, next) => {
   const comment = new Comment({
     clientId: req.body.clientId,
     sellerId: req.body.sellerId,
@@ -49,7 +50,7 @@ router.get("/GetComments/:id", (req, res, next) => {
 });
 
 /***************************************/
-router.delete("/delete/:id", (req, res, next) => {
+router.delete("/delete/:id", checkauth, (req, res, next) => {
   Comment.deleteOne({ _id: req.params.id })
     .then((result) => {
       res.status(200).json({ message: "Comment deleted !" });

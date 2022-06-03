@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const user = require("../models/user");
 const router = express.Router();
 const multer = require("multer");
+const checkauth = require("../middleware/check-user");
 
 /*************-Signup-********** */
 
@@ -182,7 +183,7 @@ router.patch(
 );
 
 /***************-Delete-*******************/
-router.delete("/delete/:id", (req, res, next) => {
+router.delete("/delete/:id", checkauth, (req, res, next) => {
   User.deleteOne({ _id: req.params.id })
     .then((result) => {
       res.status(200).json({ message: "User deleted !" });

@@ -3,6 +3,7 @@ const Gig = require("../models/gig");
 const router = express.Router();
 const multer = require("multer");
 const User = require("../models/gig");
+const checkauth = require("../middleware/check-user");
 
 const MIME_TYPE_MAP = {
   "image/png": "png",
@@ -88,7 +89,7 @@ router.get("/GetGigs/:id", (req, res, next) => {
   Gig.find({ userId: req.params.id })
     .then((documents) => {
       res.status(200).json({
-        message: "post runs seccesfully !",
+        message: "post runs succesfully !",
         results: documents,
       });
     })
@@ -119,7 +120,10 @@ router.get("/GetGig/:gigId", (req, res, next) => {
 });
 /******************-Get All-**********/
 router.get("/GetAllGigs", (req, res, next) => {
-  Gig.find()
+  console.log(req.query);
+  const { gigCategorie } = req.query;
+  const query = gigCategorie ? { gigCategorie } : {};
+  Gig.find(query)
     .select([
       "-Standardescription",
       "-StandarDeleveryTime",
@@ -149,12 +153,8 @@ router.get("/GetAllGigs", (req, res, next) => {
       "-updatedAt",
       "-__v",
     ])
+    .populate("userId")
     .then((documents) => {
-      for (let i = 0; i < documents.length; i++) {
-        User.findOne({ _id: documents[i].userId }).then((doc) => {
-          console.log(doc);
-        });
-      }
       res.status(200).json({
         result: documents,
       });
@@ -168,7 +168,7 @@ router.get("/GetAllGigs", (req, res, next) => {
     });
 });
 /***************-Delete-*******************/
-router.delete("/delete/:id", (req, res, next) => {
+router.delete("/delete/:id", checkauth, (req, res, next) => {
   Gig.deleteOne({ _id: req.params.id })
     .then((result) => {
       res.status(200).json({ message: "Comment deleted !" });

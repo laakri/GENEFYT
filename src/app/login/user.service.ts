@@ -301,4 +301,5 @@ export class UsersService {
   getUserimgPathListener() {
     return this.userUpdated.asObservable();
   }
+  /*************************************************/
 }

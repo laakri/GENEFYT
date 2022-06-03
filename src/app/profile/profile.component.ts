@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
   clientRole!: any;
 
   CanComment = true;
-  CanGig = true;
+  CanGig = false;
   AdminDelete = false;
   constructor(
     private clipboard: Clipboard,
@@ -70,7 +70,6 @@ export class ProfileComponent implements OnInit {
     this.clientRole = localStorage.getItem('userRole');
     if (this.clientRole == 'admin') {
       this.AdminDelete = true;
-      this.CanGig = true;
     } else {
       if (this.clientId == this.UserID) {
         this.CanComment = false;
