@@ -130,9 +130,7 @@ router.get("/GetAllGigs", (req, res, next) => {
       "-StandarRevisions",
       "-StandarBaseArtwork",
       "-StandarTraitAccessory",
-      "-StandarPrice",
       "-StandarVariation",
-      "-StandarPrice",
       "-StandarMetadata",
       "-StandarGeneration",
       "-StandarBackground",
@@ -168,7 +166,7 @@ router.get("/GetAllGigs", (req, res, next) => {
     });
 });
 /***************-Delete-*******************/
-router.delete("/delete/:id", checkauth, (req, res, next) => {
+router.delete("/delete/:id", (req, res, next) => {
   Gig.deleteOne({ _id: req.params.id })
     .then((result) => {
       res.status(200).json({ message: "Comment deleted !" });
