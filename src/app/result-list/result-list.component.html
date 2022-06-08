@@ -1,25 +1,36 @@
 <div class="under-toolbar">
   <div class="mainpage">
     <div class="toolbar-text">
-      <div><a href="">Graphics & Design</a></div>
+      <div>
+        <a>Graphics & Design</a>
+      </div>
       <div><a href="">Digital Marketing</a></div>
       <div><a href="">Video & Animation</a></div>
       <div><a href="">Music & Audio</a></div>
       <div><a href="">Programming & Tech</a></div>
-      <div><a href="">Tranding</a></div>
+      <div><a href="">Trading</a></div>
     </div>
   </div>
 </div>
 <mat-divider></mat-divider>
-<div class="search-bar-component">
-  <div class="input-group">
-    <input type="text" id="search" placeholder="Search..." autocomplete="off" />
 
-    <label for="search"><mat-icon>search</mat-icon></label>
+<div class="mainpage">
+  <div class="filter-section">
+    <mat-form-field appearance="outline">
+      <mat-label>Choose Gig Categorie</mat-label>
+      <mat-select
+        [(ngModel)]="filter"
+        name="option"
+        (ngModelChange)="onChange(filter)"
+      >
+        <mat-option *ngFor="let option of options" [value]="option.value">
+          {{ option.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h3 style="color: white; margin-left: 50px">Filter > {{ filter }}</h3>
   </div>
 </div>
-<mat-divider></mat-divider>
-
 <div class="mainpage">
   <div class="list-items">
     <div *ngFor="let gig of gigs">
@@ -37,7 +48,7 @@
           <!--
           <div class="list-item-user-rate">
             <mat-icon class="star">favorite</mat-icon>
-            <span>4.5</span>
+            <span>4</span>
           </div>
           -->
         </div>

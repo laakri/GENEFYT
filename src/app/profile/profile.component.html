@@ -162,7 +162,10 @@
                       <mat-icon class="star">favorite</mat-icon>
                       <span>4.5</span>
                     </div>
-                    <div class="list-item-user-delete" *ngIf="CanGig == true">
+                    <div
+                      class="list-item-user-delete"
+                      *ngIf="CanGig == true || AdminDelete == true"
+                    >
                       <a (click)="onDeleteGig(gig.id)">
                         <span class="material-icons">delete_outline</span>
                       </a>

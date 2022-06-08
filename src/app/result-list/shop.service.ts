@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class Shop {
@@ -11,10 +11,10 @@ export class Shop {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getGigs() {
+  getGigs(filter: string) {
     this.http
       .get<{ message: string; result: any }>(
-        'http://localhost:4401/api/Gigs/GetAllGigs/'
+        'http://localhost:4401/api/Gigs/GetAllGigs' + filter
       )
       .pipe(
         map((gigData) => {

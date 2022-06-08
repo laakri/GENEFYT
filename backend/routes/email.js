@@ -6,13 +6,13 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "jerryclown6699@gmail.com",
-    pass: "jerryclown6699jerryclown6699",
+    pass: "jerryclown6699jerryclown",
   },
 });
 router.post("", (req, res, next) => {
   transporter
     .sendMail({
-      from: req.body.email, //
+      from: req.body.email,
       to: "jerryclown6699@gmail.com",
       subject: req.body.name,
       html:

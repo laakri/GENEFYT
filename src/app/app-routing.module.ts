@@ -8,6 +8,8 @@ import { AddInformationComponent } from './add-information/add-information.compo
 import { CreateGigComponent } from './create-gig/create-gig.component';
 import { CodeInformationComponent } from './code-information/code-information.component';
 import { UserslistComponent } from './admin/userslist/userslist.component';
+import { ContactusComponent } from './contactus/contactus.component';
+
 import { AuthGuard } from './login/user.guard';
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path: 'ResultList', component: ResultListComponent },
   { path: 'Profile/:userId', component: ProfileComponent },
   { path: 'PostPage/:postId', component: PostPageComponent },
+  { path: 'ContactUs', component: ContactusComponent },
   {
     path: 'information',
     component: AddInformationComponent,
@@ -26,7 +29,7 @@ const routes: Routes = [
     component: CreateGigComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'codeInfo', component: CodeInformationComponent },
+  { path: 'AboutUs', component: CodeInformationComponent },
   {
     path: 'Userslist',
     component: UserslistComponent,

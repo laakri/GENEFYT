@@ -23,6 +23,7 @@ import { AuthInterceptor } from './login/login.interceptor';
 import { CodeInformationComponent } from './code-information/code-information.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserslistComponent } from './admin/userslist/userslist.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 /* *******************MODELS******************** */
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -75,6 +76,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CodeInformationComponent,
     AdminComponent,
     UserslistComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,

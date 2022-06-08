@@ -70,7 +70,14 @@ input:focus + label {
   transform: scale(1.02) translatey(-50%);
   color: #ececec;
 }
-
+/******************************************************/
+.filter-section {
+  height: 60px;
+  margin: 20px 30px 0 auto;
+}
+.filter-section mat-form-field {
+  float: right;
+}
 /******************************************************/
 .list-items {
   margin: 20px auto;
@@ -78,7 +85,7 @@ input:focus + label {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .list-item {

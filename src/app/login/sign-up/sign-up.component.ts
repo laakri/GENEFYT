@@ -1,6 +1,6 @@
 import { UsersService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,28 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignUpComponent implements OnInit {
   hide = true;
   firstFormGroup!: FormGroup;
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  constructor(public UsersService: UsersService) {}
 
-  constructor(
-    public UsersService: UsersService,
-    private _formBuilder: FormBuilder
-  ) {}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      NameFormCtrl: ['', Validators.required],
-      EmailFormCtrl: ['', Validators.email],
-      PasswordFormCtrl: ['', Validators.required],
-    });
-  }
-
-  onSignup(form: FormGroup) {
+  onSignup(form: NgForm) {
     if (form.invalid) {
       return;
     }
     this.UsersService.addUser(
-      form.value.NameFormCtrl,
-      form.value.EmailFormCtrl,
-      form.value.PasswordFormCtrl
+      form.value.name,
+      form.value.email,
+      form.value.password
     );
   }
 }

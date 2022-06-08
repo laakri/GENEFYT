@@ -120,8 +120,8 @@ router.get("/GetGig/:gigId", (req, res, next) => {
 });
 /******************-Get All-**********/
 router.get("/GetAllGigs", (req, res, next) => {
-  console.log(req.query);
   const { gigCategorie } = req.query;
+  /*const { gigObject } = req.query;*/
   const query = gigCategorie ? { gigCategorie } : {};
   Gig.find(query)
     .select([
@@ -166,7 +166,7 @@ router.get("/GetAllGigs", (req, res, next) => {
     });
 });
 /***************-Delete-*******************/
-router.delete("/delete/:id", (req, res, next) => {
+router.delete("/delete/:id", checkauth, (req, res, next) => {
   Gig.deleteOne({ _id: req.params.id })
     .then((result) => {
       res.status(200).json({ message: "Comment deleted !" });

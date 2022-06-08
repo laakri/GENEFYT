@@ -19,9 +19,11 @@
       <a class="toolbar-a" href="Userslist" *ngIf="adminIsAuthenticated">
         <button mat-raised-button>Users List</button>
       </a>
+      <a class="toolbar-a" href="Homepage">Home</a>
+      <a class="toolbar-a" href="ResultList">Shop</a>
+      <a class="toolbar-a" href="AboutUs">About Us</a>
+      <a class="toolbar-a" href="ContactUs">Contact Us</a>
 
-      <a class="toolbar-a" href="codeInfo">About Us</a>
-      <a class="toolbar-a" href="ResultList">Shop-Shop</a>
       <button mat-raised-button (click)="login()" *ngIf="!userIsAuthenticated">
         Login
       </button>

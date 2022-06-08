@@ -94,7 +94,7 @@ router.get("/data/:id", (req, res, next) => {
 });
 /*************-Get Users-********** */
 
-router.get("/data", (req, res, next) => {
+router.get("/data", checkauth, (req, res, next) => {
   User.find()
     .select([
       "-password",
