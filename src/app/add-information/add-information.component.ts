@@ -22,7 +22,7 @@ export interface User {
 })
 export class AddInformationComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = false;
+  isLinear = true;
   myControl = new FormControl();
   filteredOptions!: Observable<User[]>;
   toppings = new FormControl();

@@ -9,11 +9,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   hide = true;
-  firstFormGroup!: FormGroup;
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+
   constructor(public UsersService: UsersService) {}
 
   ngOnInit(): void {}

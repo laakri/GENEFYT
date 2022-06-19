@@ -24,6 +24,9 @@
               [formControl]="myControl"
               formControlName="categorieFormCtrl"
               [matAutocomplete]="auto"
+              #tooltip="matTooltip"
+              matTooltip="catégorie"
+              matTooltipHideDelay="100"
             />
 
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">

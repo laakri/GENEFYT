@@ -1,12 +1,10 @@
 .mainpage1 {
   background: var(--darkcolor);
-  color:var(--whitecolor);
+  color: var(--whitecolor);
   height: 85%;
   position: relative;
-  
-
 }
-.homepage-background-img{
+.homepage-background-img {
   background-image: url(../../assets/homepage-img2.png);
   position: absolute;
   height: 85%;
@@ -19,13 +17,11 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-
 }
 .mainpage {
   max-width: 1350px;
   margin: auto;
 }
-
 
 /***********************************************************************/
 .first-content {
@@ -35,11 +31,10 @@
   max-width: 700px;
   animation-name: slide-in-left;
   animation-duration: 1s;
-  border: transparent 1px solid ;
-  
+  border: transparent 1px solid;
 }
 .first-content-field {
-  margin: 200px auto;
+  margin: 120px auto;
   display: flex;
   flex-direction: column;
 }
@@ -51,11 +46,10 @@
   font-size: 45px;
   margin: 10px 0;
   line-height: 1.6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
-  
 }
-.first-content-field-smaller-text{
+.first-content-field-smaller-text {
   z-index: 1;
   font-size: 20px;
   line-height: 1.6;
@@ -64,7 +58,7 @@
   position: relative;
   width: 70%;
   margin: 30px 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 label {
@@ -102,7 +96,6 @@ input:focus + label {
 }
 
 .chips-list {
-
   display: flex;
 }
 
@@ -113,9 +106,8 @@ input:focus + label {
 mat-chip-list {
   margin-top: -6px;
   margin-left: 10px;
-
 }
-mat-chip{
+mat-chip {
   font-size: 14px;
 }
 
@@ -144,7 +136,7 @@ mat-chip{
   }
 }
 /*/********************************************************************************/
-.under-first-content{
+.under-first-content {
   position: absolute;
   bottom: 10px;
   border-radius: 5px;
@@ -154,63 +146,63 @@ mat-chip{
   justify-content: space-around;
   z-index: 1;
 }
-.under-first-content-number{
+.under-first-content-number {
   z-index: 1;
   text-align: center;
-  font-size: 50px;
+  font-size: 35px;
   height: 120px;
   width: 250px;
 }
 
-.under-first-content h1{
+.under-first-content h1 {
   z-index: 1;
   margin-top: 20px;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 550;
   letter-spacing: 2px;
 }
-.under-first-content span{
+.under-first-content span {
   z-index: 1;
   text-align: center;
   font-size: 16px;
   color: rgb(197, 197, 197);
 }
 /*/********************************************************************************/
-.one-content{
+.one-content {
   min-height: 350px;
   margin: 80px auto;
 }
 
-.one-content-text{
+.one-content-text {
   margin: 30px 20px;
   font-size: 20px;
   color: var(--whitecolor);
 }
 
-.one-content-flex{
+.one-content-flex {
   min-height: 300px;
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.one-content-left{
+.one-content-left {
   margin-top: 20px;
   width: 38%;
   min-height: 280px;
   color: var(--whitecolor);
 }
-.one-content-left h2{
+.one-content-left h2 {
   color: var(--graycolor);
 }
 
-.one-content-right{
+.one-content-right {
   width: 43%;
   min-height: 250px;
   border-radius: 20px;
   box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
-  rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
   background-image: url(../../assets/nfthome2.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -220,17 +212,17 @@ mat-chip{
 }
 
 /*/********************************************************************************/
-.two-content{
+.two-content {
   min-height: 600px;
 }
 
-.two-content-text{
-  margin: 30px 20px;
+.two-content-text {
+  margin: 30px 60px;
   font-size: 20px;
   color: var(--whitecolor);
 }
 
-.two-content-flex{
+.two-content-flex {
   margin: auto;
   min-height: 430px;
   width: 90%;
@@ -238,54 +230,52 @@ mat-chip{
   justify-content: space-around;
 }
 
-.two-content-left{
+.two-content-left {
   box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
-  rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
   width: 500px;
   border-radius: 20px;
-  background-image: url(../../assets/nfthome2.png);
+  background-image: url(../../assets/NFTyellow.jpg);
+  object-fit: cover;
   background-repeat: no-repeat;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background-position: center;
   position: relative;
 }
-.two-content-left-absolute{
+.two-content-left-absolute {
   color: var(--whitecolor);
   position: absolute;
   top: 40px;
   left: 40px;
-  width: 90%;
+  width: 80%;
 }
-.two-content-left-absolute span{
+.two-content-left-absolute span {
   font-size: 30px;
+  line-height: 1.6;
 }
-.two-content-right{
+.two-content-right {
   height: 100%;
   width: 50%;
-  
 }
-.two-content-right-item{
+.two-content-right-item {
   box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
-  rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
   width: 90%;
   min-height: 90px;
   border-radius: 20px;
   color: var(--whitecolor);
   padding: 20px;
 }
-.item2{
+.item2 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.two-content-right-item span{
+.two-content-right-item span {
   font-size: 21px;
 }
 
-.two-content-right-item h3{
+.two-content-right-item h3 {
   font-size: 17px;
-  margin: 10px auto 0 auto ;
+  margin: 10px auto 0 auto;
 }
 /********************************************************************************/
 
@@ -337,7 +327,7 @@ mat-chip{
 }
 
 /********************************************************************************/
-.slick-carousel-content{
+.slick-carousel-content {
   height: 450px;
   margin: 10px auto;
   color: var(--whitecolor);
@@ -346,7 +336,6 @@ mat-chip{
 .slick-carousel-content-size {
   max-width: 1200px;
   margin: auto;
-
 }
 .slick-carousel-content-head-text {
   font-weight: 500;
@@ -356,10 +345,10 @@ mat-chip{
   text-align: center;
   margin: 30px auto;
 }
-.slide{
+.slide {
   margin: auto 5px;
 }
-.slide img{
+.slide img {
   margin: auto;
   border-radius: 10px;
 }

@@ -3,20 +3,23 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: "jerryclown6699@gmail.com",
-    pass: "jerryclown6699jerryclown",
+    user: "glassisaif@gmail.com",
+    pass: "lzancbzgxykurssm",
   },
 });
+
 router.post("", (req, res, next) => {
   transporter
     .sendMail({
       from: req.body.email,
-      to: "jerryclown6699@gmail.com",
+      to: "glassisaif@gmail.com",
       subject: req.body.name,
       html:
-        "<h1>" +
+        "<h1 color='red'>" +
         req.body.name +
         "</h1<br><h2>" +
         req.body.email +
