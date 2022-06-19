@@ -37,14 +37,19 @@
       <mat-card class="list-item">
         <div class="list-item-firt-line">
           <img
-            src="../../assets/avatar.png"
+            src="{{ gig.userId.imgPath }}"
             alt=""
             width="100%;"
             height="100%;"
             class="list-item-user-img"
           />
 
-          <div class="list-item-user-name">{{ gig.userId.name }}</div>
+          <div
+            class="list-item-user-name"
+            [routerLink]="['/Profile', gig.userId._id]"
+          >
+            {{ gig.userId.name }}
+          </div>
           <!--
           <div class="list-item-user-rate">
             <mat-icon class="star">favorite</mat-icon>

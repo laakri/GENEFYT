@@ -92,5 +92,18 @@ export class CodeInformationComponent implements OnInit {
       discription: ' JavaScript is a strongly typed programming language .',
       type: 'Back-end',
     },
+    {
+      name: 'Github',
+      imgPath: 'https://i.ibb.co/ZhRRH46/download.png',
+      discription: ' Internet hosting for software development  using Git .',
+      type: 'Hoster',
+    },
+    {
+      name: 'Postman',
+      imgPath: 'https://i.ibb.co/TvHy5qf/download.png',
+      discription:
+        ' API platform for developers to design, build, test their APIs .',
+      type: 'API Platform',
+    },
   ];
 }

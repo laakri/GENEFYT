@@ -113,6 +113,7 @@ input:focus + label {
   line-height: 30px;
   margin-left: 10px;
   color: var(--whitecolor);
+  cursor: pointer;
 }
 .list-item-user-rate {
   height: 40px;
@@ -159,6 +160,7 @@ input:focus + label {
   width: 95%;
   height: 145px;
   border-radius: 10px;
+  cursor: pointer;
 }
 .list-item-firt-line-4 {
   position: absolute;

@@ -5,7 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../login/user.model';
-
+import { DialogOverviewExampleDialog } from '../profile/Email-Popup/Email-Popup.component';
+import { MatDialog } from '@angular/material/dialog';
+export interface DialogData {
+  email: string;
+}
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
@@ -23,9 +27,21 @@ export class PostPageComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private ProfileService: ProfileService,
-    public GigService: GigService
+    public GigService: GigService,
+    public dialog: MatDialog
   ) {}
 
+  /******************************************************/
+  openDialogEmail(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '300px',
+      height: '150px',
+      data: { email: this.users[0].email },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
+  /******************************************************/
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe((params) => {
       this.gigId = params['postId'];
@@ -65,13 +81,11 @@ export class PostPageComponent implements OnInit {
         createdAt: results.result.createdAt,
       };
       this.gigData = gig;
-      console.log(this.gigData);
 
       this.ProfileService.getusers(this.gigData.userId);
       this.userSub = this.ProfileService.getUserUpdateListener().subscribe(
         (users: User[]) => {
           this.users = users;
-          console.log(this.users[0]);
         }
       );
     });

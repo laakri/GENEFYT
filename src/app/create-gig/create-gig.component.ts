@@ -22,7 +22,7 @@ export interface categ {
 })
 export class CreateGigComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = false;
+  isLinear = true;
   filteredOptions!: Observable<categ[]>;
   myControl = new FormControl();
   value = 1;
